@@ -1,540 +1,2658 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1nFlow — Enterprise Loan Origination. AI-Assisted. POJK-Compliant.</title>
-    <meta name="description" content="1nFlow-LOS: A complete loan origination system covering UMKM, KPR, KKB, and Multiguna. BPMN-orchestrated, DMN-driven, POJK-compliant out of the box. Infrastructure for how lending actually operates.">
-    <meta name="theme-color" content="#0b1e4b">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy: #0b1e4b;
-            --navy-deep: #061334;
-            --navy-light: #0f2a5e;
-            --gold: #d4a017;
-            --gold-deep: #b8860b;
-            --gold-light: #e8c547;
-            --gold-soft: #f5e6b8;
-            --ink-900: #0f172a;
-            --ink-800: #1e293b;
-            --ink-700: #334155;
-            --ink-600: #475569;
-            --ink-500: #64748b;
-            --ink-400: #94a3b8;
-            --ink-300: #cbd5e1;
-            --ink-200: #e2e8f0;
-            --ink-100: #f1f5f9;
-            --ink-50: #f8fafc;
-            --white: #ffffff;
-            --green: #10b981;
-            --green-soft: #d1fae5;
-            --blue: #3b82f6;
-            --blue-soft: #dbeafe;
-            --purple: #a855f7;
-            --radius-xs: 4px;
-            --radius-sm: 6px;
-            --radius: 10px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --radius-2xl: 24px;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.03);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.03);
-            --shadow-lg: 0 12px 36px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.03);
-            --shadow-xl: 0 20px 56px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.04);
-            --shadow-gold: 0 8px 32px rgba(212,160,23,0.18);
-            --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
-            --transition-smooth: 0.3s cubic-bezier(0.4,0,0.2,1);
-            --transition-spring: 0.4s cubic-bezier(0.34,1.56,0.64,1);
-            --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
-            --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
-            --max-width: 1280px;
-            --cursor-size: 20px;
-            --cursor-dot: 6px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1nFlow — Banking software, infrastructure, and the engineering to operate it</title>
+<meta name="description" content="1nFlow builds the workflow platform Indonesian lenders run on — LOS, Collateral Appraisal, Collections, Treasury, CDD — and the consulting practice that gets it deployed: digital transformation, cloud and on-prem infrastructure, IoT.">
+<meta property="og:title" content="1nFlow — Software, infrastructure, and engineering for Indonesian financial services">
+<meta property="og:description" content="A platform of vertical products for Indonesian lenders, plus the consulting practice that deploys them.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://1nflow.ai">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 110'%3E%3Cline x1='14' y1='14' x2='44' y2='46' stroke='%23d4a017' stroke-width='3' opacity='.7'/%3E%3Cline x1='106' y1='14' x2='76' y2='46' stroke='%23d4a017' stroke-width='3' opacity='.7'/%3E%3Cline x1='14' y1='96' x2='44' y2='64' stroke='%23d4a017' stroke-width='3' opacity='.7'/%3E%3Cline x1='106' y1='96' x2='76' y2='64' stroke='%23d4a017' stroke-width='3' opacity='.7'/%3E%3Ccircle cx='14' cy='14' r='9' fill='%23d4a017'/%3E%3Ccircle cx='106' cy='14' r='9' fill='%23d4a017'/%3E%3Ccircle cx='14' cy='96' r='9' fill='%23d4a017'/%3E%3Ccircle cx='106' cy='96' r='9' fill='%23d4a017'/%3E%3Ctext x='34' y='80' font-family='Georgia, serif' font-size='80' font-weight='700' fill='%23d4a017'%3E1%3C/text%3E%3Ctext x='60' y='80' font-family='Georgia, serif' font-size='62' font-weight='700' fill='%23fff'%3En%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #050816;
+  --bg: #080d1f;
+  --bg-elev: #0d1530;
+  --bg-card: #11193a;
+  --bg-card-hover: #18225a;
+  --line: #1f2a52;
+  --line-strong: #2d3a6e;
+  --text: #e8ecf8;
+  --text-dim: #a0a8c8;
+  --text-faint: #6b7398;
+  --gold: #d4a017;
+  --gold-glow: #f4c84a;
+  --teal: #14b8a6;
+  --emerald: #10b981;
+  --blue: #3b82f6;
+  --purple: #a855f7;
+  --rose: #f43f5e;
+  --maxw: 1280px;
+}
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; cursor: none; }
-        body { font-family: var(--font-body); background: var(--white); color: var(--ink-800); line-height: 1.6; overflow-x: hidden; cursor: none; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* CUSTOM CURSOR */
-        .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: width 0.15s ease, height 0.15s ease, background 0.15s ease; }
-        .cursor-ring { position: fixed; top: 0; left: 0; width: 32px; height: 32px; border: 1.5px solid rgba(212,160,23,0.55); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, margin 0.15s ease; }
-        .cursor-ring.hovering { width: 48px; height: 48px; border-color: var(--gold); border-width: 2px; background: rgba(212,160,23,0.04); }
-        .cursor-dot.clicking { width: 4px; height: 4px; background: var(--navy); }
-        .cursor-ring.clicking { width: 24px; height: 24px; border-color: var(--navy); border-width: 2.5px; }
-        a, button, .btn, [role="button"], input, textarea, select, .clickable { cursor: none !important; }
+html { scroll-behavior: smooth; }
 
-        /* NAVIGATION */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.82); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid transparent; transition: all var(--transition-smooth); padding: 0 24px; }
-        .nav.scrolled { border-bottom-color: var(--ink-200); box-shadow: 0 1px 8px rgba(0,0,0,0.04); background: rgba(255,255,255,0.94); }
-        .nav-inner { max-width: var(--max-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 24px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
-        .nav-logo .mark { height: 36px; width: auto; display: block; }
-        .nav-logo .wordmark { height: 34px; width: auto; display: block; }
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nav-links a { text-decoration: none; font-size: 13.5px; font-weight: 500; color: var(--ink-600); transition: color var(--transition); letter-spacing: 0.015em; position: relative; padding: 4px 0; }
-        .nav-links a:hover { color: var(--navy); }
-        .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width var(--transition-smooth); border-radius: 1px; }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-cta { display: inline-flex; align-items: center; gap: 7px; padding: 11px 22px; background: var(--navy); color: #fff; font-size: 13px; font-weight: 600; border-radius: 999px; text-decoration: none; letter-spacing: 0.02em; transition: all var(--transition-smooth); white-space: nowrap; border: 2px solid var(--navy); position: relative; overflow: hidden; }
-        .nav-cta::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%); pointer-events: none; }
-        .nav-cta:hover { background: var(--navy-light); border-color: var(--navy-light); box-shadow: 0 4px 20px rgba(11,30,75,0.25); transform: translateY(-1px); }
-        .nav-mobile-toggle { display: none; background: none; border: none; padding: 8px; color: var(--navy); }
-        .nav-mobile-toggle span { display: block; width: 22px; height: 2px; background: currentColor; margin: 4px 0; border-radius: 1px; transition: var(--transition); }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  cursor: none;
+}
 
-        /* HERO - UPDATED HEADLINE */
-        .hero { position: relative; background: var(--navy); min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding: 100px 24px 80px; }
-        .hero-bg-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.06; background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 32px 32px; }
-        .hero-bg-lines { position: absolute; inset: 0; pointer-events: none; opacity: 0.16; }
-        .hero-bg-lines svg { width: 100%; height: 100%; }
-        .hero-glow { position: absolute; border-radius: 50%; filter: blur(140px); pointer-events: none; }
-        .hero-glow.gold-glow { width: 560px; height: 560px; background: rgba(212,160,23,0.10); top: -18%; right: -6%; }
-        .hero-glow.navy-glow { width: 440px; height: 440px; background: rgba(59,130,246,0.06); bottom: -12%; left: -4%; }
-        .hero-content { position: relative; z-index: 2; max-width: var(--max-width); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-        .hero-text { display: flex; flex-direction: column; gap: 20px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,160,23,0.10); border: 1px solid rgba(212,160,23,0.28); color: var(--gold-light); font-size: 11px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; padding: 7px 15px; border-radius: 999px; width: fit-content; }
-        .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse-dot 2s ease-in-out infinite; }
-        @keyframes pulse-dot { 0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(212,160,23,0.6); } 50% { opacity:0.6; box-shadow: 0 0 0 12px rgba(212,160,23,0); } }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(36px, 4.8vw, 54px); font-weight: 700; color: #fff; line-height: 1.12; letter-spacing: -0.025em; }
-        .hero h1 .gold { color: var(--gold); }
-        .hero-desc { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.65; max-width: 500px; }
-        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px; }
-        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; font-size: 15px; font-weight: 600; border-radius: 999px; text-decoration: none; letter-spacing: 0.02em; transition: all var(--transition-smooth); cursor: pointer; border: none; font-family: var(--font-body); white-space: nowrap; position: relative; overflow: hidden; }
-        .btn-primary { background: var(--gold); color: var(--navy-deep); border: 2px solid var(--gold); box-shadow: 0 2px 8px rgba(212,160,23,0.2); }
-        .btn-primary:hover { background: var(--gold-deep); border-color: var(--gold-deep); box-shadow: 0 10px 32px rgba(212,160,23,0.32); transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); transform: translateY(-2px); }
-        .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
-        .hero-card-stack { position: relative; width: 100%; max-width: 440px; aspect-ratio: 4/3; }
-        .hero-card { position: absolute; inset: 0; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); padding: 28px 24px; display: flex; flex-direction: column; gap: 14px; transition: all var(--transition-smooth); }
-        .hero-card.card-back { transform: rotate(-4deg) translateY(8px) scale(0.94); opacity: 0.5; z-index: 1; background: rgba(255,255,255,0.7); backdrop-filter: blur(4px); }
-        .hero-card.card-front { z-index: 2; transform: rotate(1deg); }
-        .hero-card .card-chip { display: flex; align-items: center; gap: 10px; }
-        .hero-card .card-chip-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--navy); display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-size: 18px; font-family: var(--font-display); }
-        .hero-card .card-chip-label { font-size: 13px; font-weight: 600; color: var(--ink-600); letter-spacing: 0.04em; text-transform: uppercase; }
-        .hero-card .card-stages { display: flex; gap: 6px; flex-wrap: wrap; }
-        .hero-card .stage-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ink-300); }
-        .hero-card .stage-dot.active { background: var(--gold); box-shadow: 0 0 0 4px rgba(212,160,23,0.2); }
-        .hero-card .stage-dot.done { background: var(--green); }
-        .hero-card .card-bar { height: 6px; border-radius: 3px; background: var(--ink-100); overflow: hidden; }
-        .hero-card .card-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--navy), var(--gold)); width: 62%; }
-        .hero-card .card-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-500); font-weight: 500; }
-        .hero-card .card-stat { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
-        .hero-card .card-stat small { font-size: 13px; color: var(--ink-500); font-weight: 500; font-family: var(--font-body); }
+@media (max-width: 920px) {
+  body { cursor: auto; }
+}
 
-        /* TRUST BAR */
-        .trust-bar { background: var(--ink-50); border-top: 1px solid var(--ink-200); border-bottom: 1px solid var(--ink-200); padding: 26px 24px; }
-        .trust-bar-inner { max-width: var(--max-width); margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 44px; }
-        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 500; color: var(--ink-600); letter-spacing: 0.02em; }
-        .trust-item .trust-icon { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
-        .trust-icon.shield { background: var(--green-soft); color: var(--green); } .trust-icon.check { background: var(--blue-soft); color: #2563eb; } .trust-icon.star { background: #fef3c7; color: #d97706; }
+a { color: inherit; text-decoration: none; cursor: none; }
+button { cursor: none; font-family: inherit; }
 
-        /* SECTIONS */
-        .section { padding: 96px 24px; }
-        .section-inner { max-width: var(--max-width); margin: 0 auto; }
-        .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 10px; }
-        .section-title { font-family: var(--font-display); font-size: clamp(28px, 3.8vw, 42px); font-weight: 700; color: var(--navy); line-height: 1.14; letter-spacing: -0.025em; margin-bottom: 14px; }
-        .section-desc { font-size: 16px; color: var(--ink-600); max-width: 640px; line-height: 1.65; margin-bottom: 44px; }
+img, svg { display: block; max-width: 100%; }
 
-        /* WORKFLOW */
-        .workflow-section { background: var(--white); }
-        .workflow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
-        .workflow-card { background: var(--ink-50); border: 1px solid var(--ink-200); border-radius: var(--radius-lg); padding: 26px 20px; text-align: center; transition: all var(--transition-smooth); }
-        .workflow-card:hover { border-color: var(--gold); box-shadow: var(--shadow-md); transform: translateY(-4px); }
-        .workflow-card .step-num { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 700; font-size: 17px; font-family: var(--font-display); margin-bottom: 14px; }
-        .workflow-card h4 { font-size: 15px; font-weight: 600; color: var(--ink-800); margin-bottom: 4px; }
-        .workflow-card p { font-size: 12px; color: var(--ink-500); line-height: 1.5; }
+/* ============ CUSTOM CURSOR ============ */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
 
-        /* FEATURES */
-        .features-section { background: var(--navy); color: #fff; }
-        .features-section .section-title { color: #fff; } .features-section .section-desc { color: rgba(255,255,255,0.68); } .features-section .section-label { color: var(--gold-light); }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-        .feature-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-lg); padding: 30px 26px; transition: all var(--transition-smooth); }
-        .feature-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(212,160,23,0.4); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
-        .feature-card .feat-icon { width: 46px; height: 46px; border-radius: var(--radius); background: rgba(212,160,23,0.14); display: flex; align-items: center; justify-content: center; font-size: 21px; margin-bottom: 18px; }
-        .feature-card h4 { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px; letter-spacing: -0.01em; }
-        .feature-card p { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.6; }
-        .feature-card .feat-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 11px; border-radius: 999px; margin-top: 14px; background: rgba(212,160,23,0.18); color: var(--gold-light); }
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s, height 0.15s, background 0.2s;
+}
 
-        /* ARCHITECTURE */
-        .arch-section { background: var(--ink-50); }
-        .arch-layers { display: flex; flex-direction: column; gap: 10px; margin: 32px 0; max-width: 720px; }
-        .arch-layer { display: flex; align-items: center; gap: 16px; padding: 15px 22px; background: #fff; border: 1px solid var(--ink-200); border-radius: var(--radius); font-size: 14px; font-weight: 500; color: var(--ink-700); transition: all var(--transition-smooth); }
-        .arch-layer:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); }
-        .arch-layer .layer-icon { width: 38px; height: 38px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
-        .layer-icon.db { background: #dbeafe; color: #1d4ed8; } .layer-icon.logic { background: #fef3c7; color: #92400e; } .layer-icon.workflow { background: #d1fae5; color: #065f46; } .layer-icon.storage { background: #ede9fe; color: #6d28d9; } .layer-icon.auth { background: #fce7f3; color: #9d174d; }
-        .deploy-table-wrap { overflow-x: auto; margin-top: 24px; border-radius: var(--radius-lg); border: 1px solid var(--ink-200); }
-        .deploy-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
-        .deploy-table th { background: var(--navy); color: #fff; padding: 15px 20px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
-        .deploy-table td { padding: 15px 20px; border-bottom: 1px solid var(--ink-200); color: var(--ink-700); background: #fff; }
-        .deploy-table tr:last-child td { border-bottom: none; }
-        .badge-cell { display: inline-block; padding: 5px 13px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
-        .badge-saas { background: #dbeafe; color: #1d4ed8; } .badge-private { background: #d1fae5; color: #065f46; }
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease-out, height 0.2s ease-out, border-color 0.2s, background 0.2s;
+  mix-blend-mode: normal;
+}
 
-        /* STORY */
-        .story-section { background: #fff; }
-        .story-card { background: var(--ink-50); border: 1px solid var(--ink-200); border-radius: var(--radius-2xl); padding: 44px 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; transition: all var(--transition-smooth); }
-        .story-card:hover { border-color: var(--gold); box-shadow: var(--shadow-lg); }
-        .story-visual { background: var(--navy); border-radius: var(--radius-lg); padding: 28px; color: #fff; min-height: 220px; display: flex; flex-direction: column; gap: 18px; }
-        .story-visual .story-app-name { font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; }
-        .story-visual .story-name { font-family: var(--font-display); font-size: 23px; font-weight: 600; color: #fff; }
-        .story-visual .story-detail { font-size: 13px; color: rgba(255,255,255,0.68); line-height: 1.5; }
-        .story-visual .story-progress { height: 5px; background: rgba(255,255,255,0.18); border-radius: 3px; overflow: hidden; }
-        .story-visual .story-progress-fill { height: 100%; border-radius: 3px; background: var(--gold); width: 75%; }
-        .story-text h3 { font-family: var(--font-display); font-size: 28px; color: var(--navy); font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; }
-        .story-text p { font-size: 15px; color: var(--ink-600); line-height: 1.65; }
-        .story-stat-row { display: flex; gap: 32px; margin-top: 20px; }
-        .story-stat-row .ss { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--navy); }
-        .story-stat-row .ss small { font-size: 12px; color: var(--ink-500); display: block; font-weight: 500; font-family: var(--font-body); }
+.cursor-ring::before, .cursor-ring::after {
+  content: '';
+  position: absolute;
+  border: 1px solid var(--gold);
+  opacity: 0.55;
+}
+.cursor-ring::before {
+  inset: -6px;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  animation: spin-slow 4s linear infinite;
+}
+.cursor-ring::after {
+  inset: 4px;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  animation: spin-rev 3s linear infinite;
+}
 
-        /* ROADMAP */
-        .vision-section { background: var(--navy-deep); color: #fff; }
-        .vision-section .section-title { color: #fff; } .vision-section .section-desc { color: rgba(255,255,255,0.68); } .vision-section .section-label { color: var(--gold-light); }
-        .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
-        .roadmap-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: 26px 22px; text-align: center; transition: all var(--transition-smooth); }
-        .roadmap-card:hover { border-color: rgba(212,160,23,0.5); background: rgba(255,255,255,0.05); transform: translateY(-4px); }
-        .roadmap-card .rm-icon { font-size: 38px; margin-bottom: 14px; }
-        .roadmap-card h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-        .roadmap-card p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
-        .roadmap-card.now { border-color: var(--gold); background: rgba(212,160,23,0.07); position: relative; }
-        .roadmap-card.now::after { content: 'LIVE'; position: absolute; top: 12px; right: 14px; font-size: 9px; font-weight: 700; letter-spacing: 0.11em; background: var(--gold); color: var(--navy-deep); padding: 3px 10px; border-radius: 999px; }
+/* corner ticks like a robotic targeting reticle */
+.cursor-tick {
+  position: absolute;
+  width: 5px; height: 5px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+.cursor-ring .tick-tl { top: -8px; left: -8px; border-width: 1.5px 0 0 1.5px; }
+.cursor-ring .tick-tr { top: -8px; right: -8px; border-width: 1.5px 1.5px 0 0; }
+.cursor-ring .tick-bl { bottom: -8px; left: -8px; border-width: 0 0 1.5px 1.5px; }
+.cursor-ring .tick-br { bottom: -8px; right: -8px; border-width: 0 1.5px 1.5px 0; }
 
-        /* CTA */
-        .cta-section { background: var(--white); }
-        .cta-box { background: var(--navy); border-radius: var(--radius-2xl); padding: 60px 44px; text-align: center; position: relative; overflow: hidden; }
-        .cta-box::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 28%, rgba(212,160,23,0.10) 0%, transparent 55%); pointer-events: none; }
-        .cta-box h2 { font-family: var(--font-display); font-size: clamp(28px, 3.2vw, 38px); color: #fff; font-weight: 700; letter-spacing: -0.02em; position: relative; z-index: 1; margin-bottom: 12px; }
-        .cta-box p { font-size: 16px; color: rgba(255,255,255,0.66); position: relative; z-index: 1; max-width: 520px; margin: 0 auto 26px; line-height: 1.65; }
-        .cta-box .btn-primary { position: relative; z-index: 1; font-size: 16px; padding: 17px 34px; }
+/* hover state — ring expands and locks color */
+body.cursor-hover .cursor-ring {
+  width: 56px; height: 56px;
+  border-color: var(--gold-glow);
+  background: rgba(212, 160, 23, 0.08);
+}
+body.cursor-hover .cursor-dot {
+  width: 4px; height: 4px;
+  background: var(--gold-glow);
+}
+body.cursor-hover .cursor-ring::before { animation-duration: 1.5s; }
+body.cursor-hover .cursor-ring::after  { animation-duration: 1s; }
 
-        /* FOOTER */
-        .footer { background: var(--navy-deep); color: rgba(255,255,255,0.55); padding: 52px 24px 32px; border-top: 1px solid rgba(255,255,255,0.06); }
-        .footer-inner { max-width: var(--max-width); margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 36px; font-size: 13px; }
-        .footer-brand { max-width: 290px; display: flex; flex-direction: column; gap: 8px; }
-        .footer-brand .logo-row { display: flex; align-items: center; gap: 6px; }
-        .footer-brand .logo-row .mark { height: 28px; width: auto; }
-        .footer-brand .logo-row .wordmark { height: 24px; width: auto; }
-        .footer-brand p { line-height: 1.6; font-size: 13px; color: rgba(255,255,255,0.45); }
-        .footer-links { display: flex; gap: 52px; flex-wrap: wrap; }
-        .footer-col h5 { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px; font-weight: 600; }
-        .footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 9px; transition: color var(--transition); font-size: 13px; }
-        .footer-col a:hover { color: var(--gold-light); }
-        .footer-bottom { max-width: var(--max-width); margin: 36px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: rgba(255,255,255,0.35); text-align: center; }
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-rev  { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
 
-        @media (max-width: 1024px) {
-            .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .hero-desc { max-width: 100%; } .hero-actions { justify-content: center; } .hero-badge { margin: 0 auto; } .hero-visual { max-width: 400px; margin: 0 auto; }
-            .workflow-grid { grid-template-columns: repeat(2,1fr); } .features-grid { grid-template-columns: repeat(2,1fr); } .roadmap-grid { grid-template-columns: repeat(2,1fr); } .story-card { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--ink-200); box-shadow: var(--shadow-lg); }
-            .nav-links.open { display: flex; } .nav-mobile-toggle { display: block; }
-            .workflow-grid { grid-template-columns: 1fr 1fr; gap: 10px; } .features-grid { grid-template-columns: 1fr; } .roadmap-grid { grid-template-columns: 1fr 1fr; }
-            .hero { min-height: auto; padding: 100px 20px 60px; } .section { padding: 60px 20px; } .cta-box { padding: 38px 22px; }
-            .footer-inner { flex-direction: column; gap: 28px; } .footer-links { gap: 28px; } .hero-card-stack { max-width: 340px; }
-        }
-        @media (max-width: 480px) {
-            .workflow-grid { grid-template-columns: 1fr; } .roadmap-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 30px; } .section-title { font-size: 24px; }
-            .hero-actions { flex-direction: column; align-items: center; } .btn { width: 100%; justify-content: center; } .story-stat-row { flex-direction: column; gap: 12px; }
-        }
-        @keyframes fadeInUp { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: translateY(0); } }
-        .animate-in { animation: fadeInUp 0.65s ease-out forwards; } .animate-in-delay-1 { animation-delay: 0.08s; opacity:0; } .animate-in-delay-2 { animation-delay: 0.18s; opacity:0; } .animate-in-delay-3 { animation-delay: 0.28s; opacity:0; } .animate-in-delay-4 { animation-delay: 0.38s; opacity:0; }
-        @keyframes subtle-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .floating { animation: subtle-float 5s ease-in-out infinite; }
-    </style>
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+h1 { font-size: clamp(36px, 6vw, 72px); }
+h2 { font-size: clamp(28px, 4.5vw, 52px); }
+h3 { font-size: clamp(20px, 2.5vw, 30px); }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.lede {
+  font-size: clamp(16px, 1.4vw, 19px);
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+/* ============ LAYOUT ============ */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+section { padding: 120px 0; position: relative; }
+section + section { border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  section { padding: 80px 0; }
+  .wrap { padding: 0 20px; }
+}
+
+.section-head { margin-bottom: 64px; }
+.section-head .eyebrow { margin-bottom: 16px; }
+
+/* ============ NAV ============ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  background: rgba(5, 8, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+.nav.scrolled {
+  border-bottom-color: var(--line);
+  background: rgba(5, 8, 22, 0.92);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-brand svg { height: 32px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: color 0.2s;
+  position: relative;
+  padding: 6px 0;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.has-menu::after {
+  content: '⌄';
+  margin-left: 4px;
+  font-size: 11px;
+  opacity: 0.5;
+  display: inline-block;
+  transform: translateY(-2px);
+}
+.nav-cta {
+  background: var(--gold);
+  color: #0b1e4b;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-cta:hover { background: var(--gold-glow); transform: translateY(-1px); }
+.nav-mobile-toggle { display: none; }
+
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    padding: 10px;
+    border-radius: 6px;
+  }
+  .nav-mobile-toggle span {
+    display: block;
+    width: 18px; height: 1.5px;
+    background: var(--text);
+  }
+}
+
+/* DROPDOWN MEGA-MENU */
+.mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-elev);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 0;
+  display: none;
+  z-index: 99;
+}
+.mega.open { display: block; }
+.mega-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+.mega-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.mega-link {
+  display: block;
+  padding: 10px 0;
+  color: var(--text-dim);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.mega-link:hover { color: var(--text); border-bottom-color: var(--gold); }
+.mega-link strong {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 2px;
+}
+.mega-link small {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+/* ============ HERO ============ */
+.hero {
+  padding-top: 180px;
+  padding-bottom: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { margin: 24px 0; max-width: 1100px; }
+.hero h1 .accent { color: var(--gold); font-style: italic; }
+.hero h1 .strike { color: var(--text-faint); position: relative; }
+.hero h1 .strike::after {
+  content: '';
+  position: absolute;
+  left: -2%; right: -2%;
+  top: 52%;
+  height: 4px;
+  background: var(--rose);
+  transform: rotate(-3deg);
+  opacity: 0.6;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 26px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border: none;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--gold);
+  color: #0b1e4b;
+}
+.btn-primary:hover { background: var(--gold-glow); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn .arrow { transition: transform 0.2s; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 96px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+.hero-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.hero-stat-num .unit { font-size: 0.55em; color: var(--gold); margin-left: 2px; }
+.hero-stat-lbl {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+@media (max-width: 720px) {
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============ PLATFORM CONSTELLATION ============ */
+.platform-section { background: var(--bg); }
+.constellation {
+  position: relative;
+  height: 540px;
+  margin: 48px 0;
+}
+.constellation svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.const-node {
+  cursor: none;
+  transition: filter 0.3s;
+}
+.const-node:hover { filter: drop-shadow(0 0 16px currentColor); }
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 64px;
+}
+@media (max-width: 1024px) {
+  .platform-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.vertical-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.vertical-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 50%, var(--accent, var(--gold)) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.vertical-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent, var(--gold));
+}
+.vertical-card:hover::before { opacity: 1; }
+
+.vc-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  color: var(--accent, var(--gold));
+}
+.vc-name {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.vc-name .suffix { color: var(--accent, var(--gold)); font-weight: 500; font-size: 0.85em; }
+.vc-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.vc-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.vc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.vc-status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 6px currentColor; }
+.vc-status.live { color: var(--emerald); }
+.vc-status.beta { color: var(--gold); }
+.vc-status.q3   { color: var(--text-faint); }
+
+/* ============ PRODUCT DETAIL ============ */
+.product-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin: 96px 0;
+}
+.product-row.reverse { grid-template-columns: 1fr 1fr; }
+.product-row.reverse .product-text { order: 2; }
+@media (max-width: 920px) {
+  .product-row, .product-row.reverse { grid-template-columns: 1fr; gap: 48px; }
+  .product-row.reverse .product-text { order: 0; }
+}
+.product-text .eyebrow { margin-bottom: 16px; }
+.product-text h2 { margin-bottom: 20px; }
+.product-text .lede { margin-bottom: 28px; }
+.product-features {
+  list-style: none;
+  margin: 24px 0;
+}
+.product-features li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.product-features li:first-child { border-top: 1px solid var(--line); }
+.product-features .feat-icon {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  color: var(--accent, var(--gold));
+  font-size: 12px;
+}
+.product-features .feat-text { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+.product-features .feat-text strong { color: var(--text); font-weight: 600; }
+
+.product-visual {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elev) 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.product-visual::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: var(--accent, var(--gold));
+  opacity: 0.06;
+  filter: blur(80px);
+}
+.product-visual svg { position: relative; z-index: 1; }
+
+/* ============ CONSULTING PRACTICE ============ */
+.practice-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.practice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 920px) { .practice-grid { grid-template-columns: 1fr; } }
+.practice-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 36px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.practice-card:hover {
+  border-color: var(--accent, var(--gold));
+  transform: translateY(-2px);
+}
+.practice-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent, var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+.practice-card:hover::after { transform: scaleX(1); }
+
+.practice-icon {
+  width: 56px; height: 56px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  color: var(--accent, var(--gold));
+}
+.practice-card h3 { margin-bottom: 14px; }
+.practice-card p { color: var(--text-dim); font-size: 14.5px; margin-bottom: 20px; }
+.practice-card .pc-stack {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.practice-card .pc-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text-dim);
+}
+
+/* ============ INDUSTRIES ============ */
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+@media (max-width: 920px) { .industries-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .industries-grid { grid-template-columns: 1fr; } }
+.industry-card {
+  background: var(--bg-card);
+  padding: 32px;
+  transition: background 0.3s;
+}
+.industry-card:hover { background: var(--bg-card-hover); }
+.industry-card .ind-name {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.industry-card .ind-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ============ APPROACH ============ */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+@media (max-width: 920px) {
+  .approach-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .approach-grid { grid-template-columns: 1fr; }
+}
+.approach-step {
+  position: relative;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.approach-step .step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: block;
+}
+.approach-step h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.approach-step p { font-size: 13.5px; color: var(--text-dim); line-height: 1.5; }
+.approach-step ul {
+  margin-top: 14px;
+  list-style: none;
+  font-size: 12.5px;
+  color: var(--text-faint);
+}
+.approach-step ul li {
+  padding: 4px 0 4px 14px;
+  position: relative;
+}
+.approach-step ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* ============ PROOF ============ */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 920px) { .proof-grid { grid-template-columns: 1fr; } }
+.proof-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.proof-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.proof-card .quote {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--text);
+  margin-bottom: 24px;
+  flex: 1;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.proof-card .meta {
+  font-size: 12px;
+  color: var(--text-faint);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.proof-card .meta strong {
+  display: block;
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.proof-numbers {
+  display: flex;
+  gap: 20px;
+  margin: 16px 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+.proof-num {
+  flex: 1;
+  padding: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.proof-num .pn-val {
+  font-size: 22px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.proof-num .pn-lbl {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ============ CONTACT ============ */
+.contact-section {
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+@media (max-width: 920px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+.contact-form {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 36px;
+}
+.contact-form .form-row { margin-bottom: 18px; }
+.contact-form .form-row.split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.contact-form label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 6px;
+}
+.contact-form input, .contact-form select, .contact-form textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  cursor: none;
+  transition: border-color 0.2s;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.contact-form textarea { resize: vertical; min-height: 100px; font-family: inherit; }
+.contact-form .submit-row {
+  display: flex; gap: 12px; align-items: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.contact-form .submit-row .note {
+  font-size: 11.5px; color: var(--text-faint); flex: 1;
+}
+
+.contact-side h2 { margin-bottom: 24px; }
+.contact-channels { margin: 32px 0; }
+.contact-channel {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  align-items: center;
+}
+.contact-channel:last-child { border-bottom: 1px solid var(--line); }
+.contact-channel .cc-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  background: rgba(212, 160, 23, 0.1);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+}
+.contact-channel .cc-meta {
+  flex: 1;
+}
+.contact-channel .cc-meta-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.contact-channel .cc-meta-val {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 2px;
+}
+.contact-qr {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.contact-qr .qr-svg-wrap {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  width: 110px; height: 110px;
+}
+.contact-qr .qr-svg-wrap svg { width: 90px; height: 90px; }
+.contact-qr .qr-text { flex: 1; }
+.contact-qr .qr-text strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  color: var(--text);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.contact-qr .qr-text p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--bg-deep);
+  padding: 80px 0 32px;
+  border-top: 1px solid var(--line);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+@media (max-width: 920px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+.footer-brand-block { max-width: 320px; }
+.footer-brand-block svg { height: 36px; width: auto; margin-bottom: 18px; }
+.footer-brand-block p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { padding: 7px 0; }
+.footer-col a {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.footer-bottom .compliance {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+}
+
+/* ============ ANIMATIONS ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ AMBIENT BACKGROUND ============ */
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+.ambient::before, .ambient::after {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+}
+.ambient::before {
+  top: -200px; left: -200px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  opacity: 0.15;
+}
+.ambient::after {
+  bottom: -300px; right: -200px;
+  background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+  opacity: 0.1;
+}
+
+/* ============ MISC ============ */
+.divider-strong {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 30%, var(--line-strong) 70%, transparent);
+  margin: 40px 0;
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.18;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  pointer-events: none;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
+<!-- AMBIENT BG -->
+<div class="ambient"></div>
 
-    <nav class="nav" id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo clickable" aria-label="1nFlow home">
-                <!-- 1n network mark (cleanly cropped) -->
-                <svg class="mark" viewBox="0 0 130 90" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(0 6)">
-                        <line x1="14" y1="14" x2="44" y2="46" stroke="#d4a017" stroke-width="1.5" opacity="0.5"/>
-                        <line x1="106" y1="14" x2="76" y2="46" stroke="#d4a017" stroke-width="1.5" opacity="0.5"/>
-                        <line x1="14" y1="76" x2="44" y2="44" stroke="#d4a017" stroke-width="1.5" opacity="0.5"/>
-                        <line x1="106" y1="76" x2="76" y2="44" stroke="#d4a017" stroke-width="1.5" opacity="0.5"/>
-                        <circle cx="14" cy="14" r="5" fill="#d4a017"/>
-                        <circle cx="106" cy="14" r="5" fill="#d4a017"/>
-                        <circle cx="14" cy="76" r="5" fill="#d4a017"/>
-                        <circle cx="106" cy="76" r="5" fill="#d4a017"/>
-                        <text x="34" y="70" font-family="Fraunces, serif" font-size="72" font-weight="700" fill="#d4a017">1</text>
-                        <text x="56" y="70" font-family="Fraunces, serif" font-size="54" font-weight="700" fill="#0b1e4b">n</text>
-                        <rect x="32" y="26" width="8" height="3.2" fill="#0b1e4b" rx="1" transform="rotate(-12 36 27)"/>
-                    </g>
-                </svg>
-                <!-- Wordmark: 1nFlow with wider viewBox to show entire text including "w" -->
-                <svg class="wordmark" viewBox="0 0 160 44" xmlns="http://www.w3.org/2000/svg">
-                    <text x="4" y="38" font-family="Fraunces, serif" font-size="40" font-weight="700" fill="#0b1e4b" letter-spacing="-0.02em">
-                        <tspan fill="#d4a017">1</tspan>nFlow
-                    </text>
-                </svg>
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#product">1nFlow‑LOS</a></li>
-                <li><a href="#features">Capabilities</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#story">Proof</a></li>
-            </ul>
-            <a href="#cta" class="nav-cta clickable">Request Demo</a>
-            <button class="nav-mobile-toggle clickable" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring">
+  <span class="cursor-tick tick-tl"></span>
+  <span class="cursor-tick tick-tr"></span>
+  <span class="cursor-tick tick-bl"></span>
+  <span class="cursor-tick tick-br"></span>
+</div>
 
-    <section class="hero" id="hero">
-        <div class="hero-bg-grid"></div>
-        <div class="hero-bg-lines">
-            <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="100" x2="300" y2="400" stroke="#d4a017" stroke-width="0.6" opacity="0.3"/>
-                <line x1="1200" y1="80" x2="900" y2="380" stroke="#d4a017" stroke-width="0.6" opacity="0.3"/>
-                <line x1="0" y1="700" x2="300" y2="400" stroke="#d4a017" stroke-width="0.6" opacity="0.25"/>
-                <line x1="1200" y1="720" x2="900" y2="420" stroke="#d4a017" stroke-width="0.6" opacity="0.25"/>
-                <circle cx="150" cy="250" r="3" fill="#d4a017" opacity="0.4"/><circle cx="1050" cy="230" r="3" fill="#d4a017" opacity="0.4"/>
-                <circle cx="150" cy="550" r="3" fill="#d4a017" opacity="0.35"/><circle cx="1050" cy="570" r="3" fill="#d4a017" opacity="0.35"/>
-            </svg>
-        </div>
-        <div class="hero-glow gold-glow"></div><div class="hero-glow navy-glow"></div>
-        <div class="hero-content">
-            <div class="hero-text animate-in">
-                <div class="hero-badge"><span class="dot"></span> POJK-Compliant · AI-Assisted · Enterprise Ready</div>
-                <h1>Infrastructure for how<br><span class="gold">lending actually operates.</span></h1>
-                <p class="hero-desc">1nFlow‑LOS is a complete loan origination system covering UMKM, KPR, KKB, and Multiguna. BPMN‑orchestrated workflow. DMN‑driven credit policies. The credit officer keeps every decision — AI only writes the narrative they review and sign.</p>
-                <div class="hero-actions">
-                    <a href="#cta" class="btn btn-primary clickable">See It In Action →</a>
-                    <a href="#product" class="btn btn-outline clickable">Explore the Platform</a>
-                </div>
-            </div>
-            <div class="hero-visual animate-in animate-in-delay-2 floating">
-                <div class="hero-card-stack">
-                    <div class="hero-card card-back">
-                        <div class="card-chip"><div class="card-chip-icon">1n</div><span class="card-chip-label">Application #A-2047</span></div>
-                        <div class="card-stages"><span class="stage-dot done"></span><span class="stage-dot done"></span><span class="stage-dot done"></span><span class="stage-dot active"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div>
-                        <div class="card-bar"><div class="card-bar-fill"></div></div>
-                        <div class="card-row"><span>KYC ✓</span><span>Credit ✓</span><span>Committee →</span></div>
-                    </div>
-                    <div class="hero-card card-front">
-                        <div class="card-chip"><div class="card-chip-icon">1n</div><span class="card-chip-label">Live · Toko Aminah Snack</span></div>
-                        <div class="card-stages"><span class="stage-dot done"></span><span class="stage-dot done"></span><span class="stage-dot done"></span><span class="stage-dot done"></span><span class="stage-dot active"></span><span class="stage-dot"></span><span class="stage-dot"></span><span class="stage-dot"></span></div>
-                        <div class="card-bar"><div class="card-bar-fill" style="width:62%;"></div></div>
-                        <div class="card-row"><span>Rp 150 jt · UMKM</span><span class="card-stat">24<span style="font-size:13px;"> mo</span></span></div>
-                        <div class="card-row" style="font-size:11px;color:var(--ink-400);"><span>AI narrative generated</span><span>Awaiting review</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <div class="trust-bar">
-        <div class="trust-bar-inner">
-            <div class="trust-item"><span class="trust-icon shield">🛡</span> POJK 12/2017 · 18/2017 · 23/2022 · 1/2024 · 4/2022</div>
-            <div class="trust-item"><span class="trust-icon check">✓</span> Dukcapil eKYC · Native Integration</div>
-            <div class="trust-item"><span class="trust-icon star">◆</span> SLIK iDeb · Real‑Time Connectivity</div>
-            <div class="trust-item"><span class="trust-icon check">✓</span> ISO 27001‑Ready · Enterprise Grade</div>
-        </div>
+<!-- ====================================================== -->
+<!-- NAVIGATION -->
+<!-- ====================================================== -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-brand">
+      <svg viewBox="0 0 380 130" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(0 10)">
+          <line x1="14" y1="14" x2="44" y2="46" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+          <line x1="106" y1="14" x2="76" y2="46" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+          <line x1="14" y1="96" x2="44" y2="64" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+          <line x1="106" y1="96" x2="76" y2="64" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="14" cy="14" r="5" fill="#d4a017"/>
+          <circle cx="106" cy="14" r="5" fill="#d4a017"/>
+          <circle cx="14" cy="96" r="5" fill="#d4a017"/>
+          <circle cx="106" cy="96" r="5" fill="#d4a017"/>
+          <text x="34" y="80" font-family="Fraunces, serif" font-size="80" font-weight="700" fill="#d4a017">1</text>
+          <text x="60" y="80" font-family="Fraunces, serif" font-size="62" font-weight="700" fill="#fff">n</text>
+          <rect x="32" y="32" width="9" height="3.5" fill="#fff" rx="1" transform="rotate(-12 36 34)"/>
+        </g>
+        <text x="155" y="92" font-family="Fraunces, serif" font-size="64" font-weight="700" fill="#fff" letter-spacing="-0.02em">Flow</text>
+      </svg>
+    </a>
+
+    <div class="nav-links">
+      <a href="#platform" class="has-menu" data-mega="platform">Platform</a>
+      <a href="#consulting" class="has-menu" data-mega="consulting">Consulting</a>
+      <a href="#industries">Industries</a>
+      <a href="#approach">Approach</a>
+      <a href="#proof">Customers</a>
+      <a href="#contact" class="nav-cta">Book a working session <span class="arrow">→</span></a>
     </div>
 
-    <section class="section workflow-section" id="product">
-        <div class="section-inner">
-            <div class="section-label">1nFlow‑LOS · The First Vertical</div>
-            <h2 class="section-title">The 8‑Stage Origination Workflow · BPMN</h2>
-            <p class="section-desc">Every application moves through a fully auditable, BPMN‑orchestrated pipeline. From KYC + liveness to disbursement and monitoring — every decision is logged, every step is role‑gated.</p>
-            <div class="workflow-grid">
-                <div class="workflow-card animate-in animate-in-delay-1"><div class="step-num">1</div><h4>KYC + Liveness</h4><p>Dukcapil eKYC with biometric liveness. POJK 12/2017 compliant identity verification.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-1"><div class="step-num">2</div><h4>Credit Analysis</h4><p>SLIK iDeb pull, financial ratio computation, AI‑generated narrative draft for officer review.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-2"><div class="step-num">3</div><h4>Collateral</h4><p>Valuation, legal document verification, LTV ratio enforcement via DMN rules engine.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-2"><div class="step-num">4</div><h4>Legal Review</h4><p>Document completeness check, legal opinion workflow, POJK‑compliant checklist.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-3"><div class="step-num">5</div><h4>Committee</h4><p>Role‑based routing. Every member sees exactly what they need. Full voting audit trail.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-3"><div class="step-num">6</div><h4>Documentation</h4><p>Automated PK generation, e‑signature integration, digital contract archival in MinIO.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-4"><div class="step-num">7</div><h4>Disbursement</h4><p>Multi‑signature approval, core banking integration, real‑time GL posting.</p></div>
-                <div class="workflow-card animate-in animate-in-delay-4"><div class="step-num">8</div><h4>Monitoring</h4><p>Post‑disbursement covenant tracking, early warning indicators, collection handoff ready.</p></div>
-            </div>
+    <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- MEGA MENU: Platform -->
+  <div class="mega" id="mega-platform">
+    <div class="mega-inner">
+      <div class="mega-col">
+        <h4>Vertical Products · Banking</h4>
+        <a class="mega-link" href="#vertical-los"><strong>1nFlow-LOS</strong><small>Loan Origination · UMKM, KPR, KKB, Multiguna</small></a>
+        <a class="mega-link" href="#vertical-appraisal"><strong>1nFlow-Appraisal</strong><small>Collateral valuation · KJPP + internal pipeline</small></a>
+        <a class="mega-link" href="#vertical-collections"><strong>1nFlow-Collections</strong><small>NPL collection · restructuring workflows</small></a>
+      </div>
+      <div class="mega-col">
+        <h4>Vertical Products · Risk &amp; Compliance</h4>
+        <a class="mega-link" href="#vertical-treasury"><strong>1nFlow-Treasury</strong><small>Treasury &amp; ALM · liquidity, GAP, BMPK</small></a>
+        <a class="mega-link" href="#vertical-cdd"><strong>1nFlow-CDD</strong><small>Customer Due Diligence · standalone KYC</small></a>
+      </div>
+      <div class="mega-col">
+        <h4>Platform Capabilities</h4>
+        <a class="mega-link" href="#platform"><strong>Workflow engine</strong><small>BPMN · DMN · CMMN orchestration</small></a>
+        <a class="mega-link" href="#platform"><strong>AI assistance</strong><small>Anthropic Claude · advisory only · POJK 4/2022</small></a>
+        <a class="mega-link" href="#platform"><strong>Compliance posture</strong><small>POJK · UU PDP · OJK audit pack</small></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEGA MENU: Consulting -->
+  <div class="mega" id="mega-consulting">
+    <div class="mega-inner">
+      <div class="mega-col">
+        <h4>Digital Transformation</h4>
+        <a class="mega-link" href="#consulting"><strong>Operating-model redesign</strong><small>Process · org · technology in lockstep</small></a>
+        <a class="mega-link" href="#consulting"><strong>Core banking modernization</strong><small>Strangler-fig migration paths</small></a>
+        <a class="mega-link" href="#consulting"><strong>Data &amp; analytics</strong><small>Lakehouse, BI, regulatory reporting</small></a>
+      </div>
+      <div class="mega-col">
+        <h4>Cloud &amp; Infrastructure</h4>
+        <a class="mega-link" href="#consulting"><strong>Cloud architecture</strong><small>AWS Jakarta · GCP · Alibaba Cloud Indonesia</small></a>
+        <a class="mega-link" href="#consulting"><strong>On-prem virtualization</strong><small>VMware vSphere · Proxmox VE · Nutanix</small></a>
+        <a class="mega-link" href="#consulting"><strong>Hybrid &amp; private cloud</strong><small>OJK data residency · CBN · Lintasarta</small></a>
+      </div>
+      <div class="mega-col">
+        <h4>Specialized Practices</h4>
+        <a class="mega-link" href="#consulting"><strong>IoT &amp; edge</strong><small>Industrial sensors · fleet · agritech</small></a>
+        <a class="mega-link" href="#consulting"><strong>Cybersecurity</strong><small>POJK 11/2022 · ISO 27001 · pentest</small></a>
+        <a class="mega-link" href="#consulting"><strong>Business consulting</strong><small>Regulatory advisory · change management</small></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ====================================================== -->
+<!-- HERO -->
+<!-- ====================================================== -->
+<section class="hero" id="top">
+  <div class="bg-grid"></div>
+  <svg class="hero-bg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="herograd" cx="50%" cy="40%" r="50%">
+        <stop offset="0%" stop-color="#d4a017" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="700" cy="320" r="400" fill="url(#herograd)"/>
+    <!-- network of light dots -->
+    <g opacity="0.4">
+      <circle cx="200" cy="180" r="2" fill="#d4a017"/>
+      <circle cx="380" cy="140" r="1.5" fill="#d4a017"/>
+      <circle cx="560" cy="220" r="2" fill="#d4a017"/>
+      <circle cx="780" cy="160" r="1.5" fill="#d4a017"/>
+      <circle cx="980" cy="240" r="2" fill="#d4a017"/>
+      <circle cx="1180" cy="180" r="1.5" fill="#d4a017"/>
+      <circle cx="320" cy="380" r="1.5" fill="#3b82f6"/>
+      <circle cx="540" cy="440" r="2" fill="#3b82f6"/>
+      <circle cx="860" cy="380" r="1.5" fill="#3b82f6"/>
+      <circle cx="1080" cy="440" r="2" fill="#3b82f6"/>
+      <circle cx="240" cy="580" r="1.5" fill="#a855f7"/>
+      <circle cx="480" cy="620" r="2" fill="#a855f7"/>
+      <circle cx="720" cy="580" r="1.5" fill="#a855f7"/>
+      <circle cx="980" cy="620" r="2" fill="#a855f7"/>
+      <line x1="200" y1="180" x2="380" y2="140" stroke="#d4a017" stroke-width="0.5" opacity="0.4"/>
+      <line x1="380" y1="140" x2="560" y2="220" stroke="#d4a017" stroke-width="0.5" opacity="0.4"/>
+      <line x1="560" y1="220" x2="780" y2="160" stroke="#d4a017" stroke-width="0.5" opacity="0.4"/>
+      <line x1="780" y1="160" x2="980" y2="240" stroke="#d4a017" stroke-width="0.5" opacity="0.4"/>
+      <line x1="320" y1="380" x2="540" y2="440" stroke="#3b82f6" stroke-width="0.5" opacity="0.4"/>
+      <line x1="540" y1="440" x2="860" y2="380" stroke="#3b82f6" stroke-width="0.5" opacity="0.4"/>
+      <line x1="240" y1="580" x2="480" y2="620" stroke="#a855f7" stroke-width="0.5" opacity="0.4"/>
+      <line x1="480" y1="620" x2="720" y2="580" stroke="#a855f7" stroke-width="0.5" opacity="0.4"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero-content">
+    <div class="eyebrow reveal">Software · Infrastructure · Consulting · Indonesia</div>
+    <h1 class="reveal">
+      The platform Indonesian lenders<br/>
+      run on — and <span class="accent">the team that builds it</span>.
+    </h1>
+    <p class="lede reveal">
+      We make a vertical-product platform for banking workflows — origination, collateral appraisal, collections, treasury, due diligence — and we run the consulting practice that gets it deployed: digital transformation, cloud and on-prem infrastructure, IoT. <strong style="color: var(--text);">One company, two halves of the same engagement.</strong>
+    </p>
+
+    <div class="hero-cta-row reveal">
+      <a href="#platform" class="btn btn-primary">See the platform <span class="arrow">→</span></a>
+      <a href="#contact" class="btn btn-ghost">Book a working session</a>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div>
+        <div class="hero-stat-num">5<span class="unit">verticals</span></div>
+        <div class="hero-stat-lbl">Products in the 1nFlow platform — LOS shipping, three on the 2026 roadmap.</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">~75<span class="unit">%</span></div>
+        <div class="hero-stat-lbl">Cost vs. Oracle FLEXCUBE / Temenos at comparable functional parity, on commodity infrastructure.</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">8–12<span class="unit">wk</span></div>
+        <div class="hero-stat-lbl">Realistic deployment window from contract to first live application — measured, not promised.</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100<span class="unit">%</span></div>
+        <div class="hero-stat-lbl">Indonesian compliance posture out of the box — POJK, UU PDP, PP 71/2019 data sovereignty.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- PLATFORM CONSTELLATION -->
+<!-- ====================================================== -->
+<section class="platform-section" id="platform">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The 1nFlow Platform</div>
+      <h2>Five verticals. One engine.<br/>Built so you buy what you need today<br/>and grow into the rest.</h2>
+      <p class="lede" style="margin-top: 24px;">Each product is a complete vertical — but they share one workflow engine, one identity layer, one audit log, one compliance posture. Buy 1nFlow-LOS today and the same architecture runs your collections, treasury, and CDD when you're ready.</p>
+    </div>
+
+    <div class="constellation">
+      <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hubgrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#d4a017" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- central hub -->
+        <circle cx="600" cy="270" r="140" fill="url(#hubgrad)"/>
+        <circle cx="600" cy="270" r="56" fill="#0b1e4b" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="600" y="265" font-family="Fraunces, serif" font-size="14" fill="#d4a017" text-anchor="middle" font-weight="700">1nFlow</text>
+        <text x="600" y="282" font-family="Inter, sans-serif" font-size="9" fill="#a0a8c8" text-anchor="middle">Platform</text>
+
+        <!-- 5 verticals as orbits -->
+        <!-- LOS - top left -->
+        <line x1="600" y1="270" x2="280" y2="120" stroke="#d4a017" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+        <circle cx="280" cy="120" r="46" fill="#0b1e4b" stroke="#d4a017" stroke-width="1.5" class="const-node" style="color: #d4a017;"/>
+        <text x="280" y="116" font-family="Fraunces, serif" font-size="13" fill="#d4a017" text-anchor="middle" font-weight="700">LOS</text>
+        <text x="280" y="132" font-family="JetBrains Mono, monospace" font-size="8" fill="#10b981" text-anchor="middle">● LIVE</text>
+
+        <!-- Appraisal - top right -->
+        <line x1="600" y1="270" x2="920" y2="120" stroke="#14b8a6" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+        <circle cx="920" cy="120" r="46" fill="#0b1e4b" stroke="#14b8a6" stroke-width="1.5" class="const-node" style="color: #14b8a6;"/>
+        <text x="920" y="115" font-family="Fraunces, serif" font-size="13" fill="#14b8a6" text-anchor="middle" font-weight="700">Appraisal</text>
+        <text x="920" y="132" font-family="JetBrains Mono, monospace" font-size="8" fill="#10b981" text-anchor="middle">● LIVE</text>
+
+        <!-- Collections - middle left -->
+        <line x1="600" y1="270" x2="180" y2="320" stroke="#10b981" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+        <circle cx="180" cy="320" r="46" fill="#0b1e4b" stroke="#10b981" stroke-width="1.5" class="const-node" style="color: #10b981;"/>
+        <text x="180" y="316" font-family="Fraunces, serif" font-size="13" fill="#10b981" text-anchor="middle" font-weight="700">Collections</text>
+        <text x="180" y="332" font-family="JetBrains Mono, monospace" font-size="8" fill="#a0a8c8" text-anchor="middle">○ Q3 2026</text>
+
+        <!-- Treasury - middle right -->
+        <line x1="600" y1="270" x2="1020" y2="320" stroke="#3b82f6" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+        <circle cx="1020" cy="320" r="46" fill="#0b1e4b" stroke="#3b82f6" stroke-width="1.5" class="const-node" style="color: #3b82f6;"/>
+        <text x="1020" y="316" font-family="Fraunces, serif" font-size="13" fill="#3b82f6" text-anchor="middle" font-weight="700">Treasury</text>
+        <text x="1020" y="332" font-family="JetBrains Mono, monospace" font-size="8" fill="#a0a8c8" text-anchor="middle">○ Q1 2027</text>
+
+        <!-- CDD - bottom -->
+        <line x1="600" y1="270" x2="600" y2="460" stroke="#a855f7" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+        <circle cx="600" cy="460" r="46" fill="#0b1e4b" stroke="#a855f7" stroke-width="1.5" class="const-node" style="color: #a855f7;"/>
+        <text x="600" y="456" font-family="Fraunces, serif" font-size="13" fill="#a855f7" text-anchor="middle" font-weight="700">CDD</text>
+        <text x="600" y="472" font-family="JetBrains Mono, monospace" font-size="8" fill="#a0a8c8" text-anchor="middle">○ Q4 2026</text>
+
+        <!-- inter-vertical connections (faint) -->
+        <line x1="280" y1="120" x2="920" y2="120" stroke="#1f2a52" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <line x1="180" y1="320" x2="1020" y2="320" stroke="#1f2a52" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <line x1="280" y1="120" x2="180" y2="320" stroke="#1f2a52" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <line x1="920" y1="120" x2="1020" y2="320" stroke="#1f2a52" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <line x1="180" y1="320" x2="600" y2="460" stroke="#1f2a52" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <line x1="1020" y1="320" x2="600" y2="460" stroke="#1f2a52" stroke-width="0.5" stroke-dasharray="2 4"/>
+      </svg>
+    </div>
+
+    <div class="platform-grid">
+      <a href="#vertical-los" class="vertical-card" style="--accent: #d4a017;">
+        <div class="vc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="9" y1="14" x2="15" y2="14"/>
+            <line x1="9" y1="18" x2="15" y2="18"/>
+          </svg>
         </div>
-    </section>
+        <div class="vc-name">1nFlow<span class="suffix">-LOS</span></div>
+        <div class="vc-tag">Loan Origination System</div>
+        <p class="vc-desc">UMKM · KPR · KKB · Multiguna · KUR. POJK-compliant origination from intake to disbursement.</p>
+        <div class="vc-status live"><span class="dot"></span> LIVE · v 1.0</div>
+      </a>
 
-    <section class="section features-section" id="features">
-        <div class="section-inner">
-            <div class="section-label">Enterprise Capabilities</div>
-            <h2 class="section-title">AI writes the narrative.<br>The credit officer keeps every decision.</h2>
-            <p class="section-desc">We don't replace human judgment — we amplify it. Our AI engine drafts complete credit narratives in Bahasa Indonesia, flags anomalies, and surfaces relevant policies. But the approve or reject decision always belongs to a named human. Always auditable. Always compliant.</p>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feat-icon">📝</div><h4>AI‑Assisted Credit Narratives</h4><p>Generates a comprehensive, Bahasa Indonesia credit narrative from structured application data. The officer reviews, edits, and signs. Every version is archived immutably.</p><span class="feat-tag">POJK 4/2022 AI Governance</span></div>
-                <div class="feature-card"><div class="feat-icon">🔐</div><h4>Role‑Based Access Control</h4><p>Fine‑grained permissions per role, per stage, per product. Maker‑checker‑approver segregation is enforced at the BPMN level — not bolted on after the fact.</p><span class="feat-tag">POJK 23/2022 BMPK</span></div>
-                <div class="feature-card"><div class="feat-icon">📋</div><h4>DMN‑Driven Credit Policies</h4><p>Credit rules are Decision Model and Notation — readable by compliance, changeable by business, deployable by IT. No black boxes. No buried logic.</p><span class="feat-tag">POJK 1/2024 DBR</span></div>
-                <div class="feature-card"><div class="feat-icon">🔍</div><h4>Full Audit Trail</h4><p>Every click, every decision, every override — timestamped and immutable. When OJK examiners arrive, you deliver the complete audit record in minutes, not weeks.</p><span class="feat-tag">Exam‑Ready in Minutes</span></div>
-                <div class="feature-card"><div class="feat-icon">🏦</div><h4>Dukcapil eKYC + SLIK iDeb</h4><p>Native integrations within the workflow transaction. No third‑party middleware. Liveness check, NIK validation, and SLIK pull happen in one atomic process.</p><span class="feat-tag">POJK 12/2017 · 18/2017</span></div>
-                <div class="feature-card"><div class="feat-icon">☁️</div><h4>Managed SaaS or Private Cloud</h4><p>Deploy in our Jakarta‑region VPC or in your own data center. Same codebase, same audit log, same compliance posture. Source code available under commercial license.</p><span class="feat-tag">No Lock‑In · Escrow Available</span></div>
-            </div>
+      <a href="#vertical-appraisal" class="vertical-card" style="--accent: #14b8a6;">
+        <div class="vc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
         </div>
-    </section>
+        <div class="vc-name">1nFlow<span class="suffix">-Appraisal</span></div>
+        <div class="vc-tag">Collateral Valuation</div>
+        <p class="vc-desc">KJPP eksternal + internal pipeline. POJK 17 + SPI 2018 compliant. Mobile field capture, revaluasi tracker.</p>
+        <div class="vc-status live"><span class="dot"></span> LIVE · v 1.0</div>
+      </a>
 
-    <section class="section arch-section" id="architecture">
-        <div class="section-inner">
-            <div class="section-label">Technology</div>
-            <h2 class="section-title">Boring tech. Battle‑tested. Your team already knows it.</h2>
-            <p class="section-desc">Spring Boot, PostgreSQL, Flowable, MinIO, Keycloak. A standard JVM stack that any competent engineering team can run, extend, and audit. No exotic dependencies. No proprietary lock‑in. No single‑vendor risk.</p>
-            <div class="arch-layers">
-                <div class="arch-layer"><span class="layer-icon db">DB</span> PostgreSQL — ACID‑compliant transactional consistency, trusted by millions of applications worldwide</div>
-                <div class="arch-layer"><span class="layer-icon logic">DMN</span> Flowable BPMN + DMN — orchestrated workflows with decision tables stored as version‑controlled code</div>
-                <div class="arch-layer"><span class="layer-icon workflow">API</span> Spring Boot — RESTful APIs, fully documented, standard JVM ecosystem with massive global talent pool</div>
-                <div class="arch-layer"><span class="layer-icon storage">Obj</span> MinIO — S3‑compatible object storage for documents, evidence, and contracts</div>
-                <div class="arch-layer"><span class="layer-icon auth">Auth</span> Keycloak — OAuth2 / OIDC, integrates seamlessly with your existing IAM infrastructure</div>
-            </div>
-            <h3 style="font-family:var(--font-display);font-size:21px;color:var(--navy);margin:36px 0 18px;letter-spacing:-0.01em;">Two deployment models. Same guarantees.</h3>
-            <div class="deploy-table-wrap">
-                <table class="deploy-table">
-                    <thead><tr><th>Aspect</th><th>Managed SaaS</th><th>Private Deployment</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Data residency</strong></td><td>1nFlow VPC — CBN / Lintasarta / AWS Jakarta</td><td>Your data center — private cloud — your VPC</td></tr>
-                        <tr><td><strong>Time to production</strong></td><td>2–3 weeks — configuration only</td><td>8–12 weeks — installation + integration</td></tr>
-                        <tr><td><strong>Customization surface</strong></td><td>DMN rules · BPMN flows · full white‑label branding</td><td>Full source access · custom modules · fork rights</td></tr>
-                        <tr><td><strong>Ideal for</strong></td><td><span class="badge-cell badge-saas">BPR · Multifinance · Fintech</span></td><td><span class="badge-cell badge-private">BPD · Regional Banks · Tier‑2 Commercial</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
+      <a href="#vertical-collections" class="vertical-card" style="--accent: #10b981;">
+        <div class="vc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
         </div>
-    </section>
+        <div class="vc-name">1nFlow<span class="suffix">-Collections</span></div>
+        <div class="vc-tag">NPL Workflow</div>
+        <p class="vc-desc">Soft + hard collections. Restructuring, DPK migration, repossession workflows. WhatsApp / SMS / call orchestration.</p>
+        <div class="vc-status q3"><span class="dot"></span> Q3 2026</div>
+      </a>
 
-    <section class="section story-section" id="story">
-        <div class="section-inner">
-            <div class="section-label">Proof in Production</div>
-            <h2 class="section-title">A real application. End to end.</h2>
-            <p class="section-desc">Siti Aminah owns Toko Aminah Snack in Cibubur. She applied to BPR Demo Bank for Rp 150 juta UMKM Modal Kerja over 24 months. Here is her application moving through 1nFlow‑LOS — exactly what your team sees every day.</p>
-            <div class="story-card">
-                <div class="story-visual">
-                    <span class="story-app-name">1nFlow‑LOS · Live Application Feed</span>
-                    <span class="story-name">Siti Aminah — Toko Aminah Snack</span>
-                    <span class="story-detail">Rp 150.000.000 · UMKM Modal Kerja · 24 Bulan · Cibubur</span>
-                    <div class="story-progress"><div class="story-progress-fill"></div></div>
-                    <span class="story-detail" style="font-size:11px;">Stage 6 of 8 — Documentation — AI narrative reviewed and signed ✓</span>
-                </div>
-                <div class="story-text">
-                    <h3>What your board sees on Monday morning.</h3>
-                    <p>Real‑time pipeline health. Applications stuck longer than SLA are automatically flagged. Portfolio concentration alerts fire before limits are breached. Every number is drillable down to the individual application — because the audit trail connects every layer.</p>
-                    <div class="story-stat-row">
-                        <div class="ss">62%<small>Pipeline health score</small></div>
-                        <div class="ss">3<small>Applications stuck &gt; 7 days</small></div>
-                        <div class="ss">Rp 2.1B<small>Active portfolio exposure</small></div>
-                    </div>
-                </div>
-            </div>
+      <a href="#vertical-treasury" class="vertical-card" style="--accent: #3b82f6;">
+        <div class="vc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <line x1="12" y1="20" x2="12" y2="10"/>
+            <line x1="18" y1="20" x2="18" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="16"/>
+          </svg>
         </div>
-    </section>
+        <div class="vc-name">1nFlow<span class="suffix">-Treasury</span></div>
+        <div class="vc-tag">Treasury &amp; ALM</div>
+        <p class="vc-desc">Liquidity, GAP analysis, BMPK monitoring, money-market positions. Integrated with core banking.</p>
+        <div class="vc-status q3"><span class="dot"></span> Q1 2027</div>
+      </a>
 
-    <section class="section vision-section" id="vision">
-        <div class="section-inner">
-            <div class="section-label">Beyond Lending</div>
-            <h2 class="section-title">One platform. Infinite reach.</h2>
-            <p class="section-desc">1nFlow is not confined to loan origination. The same engine — BPMN, DMN, audit, auth — will power collections, treasury, CDD, and the entire digital transformation agenda of your enterprise. We are building for the next ten years, not the next quarter.</p>
-            <div class="roadmap-grid">
-                <div class="roadmap-card now"><div class="rm-icon">🏦</div><h4>1nFlow‑LOS</h4><p>Loan Origination System. UMKM, KPR, KKB, Multiguna. Processing billions monthly.</p></div>
-                <div class="roadmap-card"><div class="rm-icon">📱</div><h4>Mobile Apps</h4><p>Native iOS & Android for field officers, borrowers, and decision makers. In development.</p></div>
-                <div class="roadmap-card"><div class="rm-icon">⚙️</div><h4>Digital Transformation</h4><p>End‑to‑end process digitization beyond lending. BPMN + DMN for any enterprise workflow.</p></div>
-                <div class="roadmap-card"><div class="rm-icon">💡</div><h4>IT Consulting</h4><p>Enterprise architecture, compliance advisory, and custom module delivery on the 1nFlow stack.</p></div>
-            </div>
+      <a href="#vertical-cdd" class="vertical-card" style="--accent: #a855f7;">
+        <div class="vc-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
         </div>
-    </section>
+        <div class="vc-name">1nFlow<span class="suffix">-CDD</span></div>
+        <div class="vc-tag">Customer Due Diligence</div>
+        <p class="vc-desc">Standalone KYC/CDD module. PEP screening, AML transaction monitoring, STR generation. POJK 12/2017.</p>
+        <div class="vc-status q3"><span class="dot"></span> Q4 2026</div>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <section class="section cta-section" id="cta">
-        <div class="section-inner">
-            <div class="cta-box">
-                <h2>Let's unblock your stuck applications.</h2>
-                <p>A 30‑minute working session at your office. We bring 1nFlow‑LOS pre‑loaded with one of your real applications. Your credit officer drives. No slides. No theory. Just the platform.</p>
-                <a href="mailto:santo@1nflow.ai" class="btn btn-primary clickable">📧 santo@1nflow.ai — Schedule Now</a>
-                <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,0.45);position:relative;z-index:1;">📞 +62 819 1017 3445 &nbsp;|&nbsp; 💬 wa.me/6281910173445</p>
-            </div>
+<!-- ====================================================== -->
+<!-- VERTICAL: LOS -->
+<!-- ====================================================== -->
+<section id="vertical-los">
+  <div class="wrap">
+    <div class="product-row">
+      <div class="product-text" style="--accent: #d4a017;">
+        <div class="eyebrow" style="color: #d4a017;">Vertical 01 · Live</div>
+        <h2>1nFlow<span style="color: #d4a017;">-LOS</span></h2>
+        <p class="lede">A complete loan origination system covering UMKM, KPR, KKB, Multiguna, and KUR. Eight-stage BPMN-orchestrated workflow from RM intake to BI Fast disbursement, with audit trail on every decision.</p>
+        <ul class="product-features">
+          <li>
+            <span class="feat-icon">⚡</span>
+            <span class="feat-text"><strong>BPMN-orchestrated origination.</strong> Submission → KYC → Enrichment → Verification → Underwriting → Committee → Acceptance → Disbursement. Editable in BPMN designer; no Java change required to alter your workflow.</span>
+          </li>
+          <li>
+            <span class="feat-icon">🛡</span>
+            <span class="feat-text"><strong>Indonesian compliance built in.</strong> POJK 12/2017 (KYC), 18/2017 (SLIK), 23/2022 (BMPK), 1/2024 (DBR), 4/2022 (AI governance). Dukcapil eKYC + SLIK iDeb integrations live.</span>
+          </li>
+          <li>
+            <span class="feat-icon">🤖</span>
+            <span class="feat-text"><strong>AI credit narrative — advisory only.</strong> Anthropic Claude drafts the 5C analysis in 14 seconds; the credit officer reviews, edits, and signs. AI never makes binding decisions (POJK 4/2022).</span>
+          </li>
+          <li>
+            <span class="feat-icon">📊</span>
+            <span class="feat-text"><strong>Analytics built in.</strong> Pipeline health, time-to-decision distribution, NPL by product, officer productivity. No separate BI tool required.</span>
+          </li>
+        </ul>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <a href="#contact" class="btn btn-primary">Request product deck <span class="arrow">→</span></a>
+          <a href="#contact" class="btn btn-ghost">See live demo</a>
         </div>
-    </section>
+      </div>
 
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo-row">
-                    <svg class="mark" viewBox="0 0 110 70" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="10" y1="10" x2="32" y2="36" stroke="#d4a017" stroke-width="1.2" opacity="0.45"/>
-                        <line x1="76" y1="10" x2="54" y2="36" stroke="#d4a017" stroke-width="1.2" opacity="0.45"/>
-                        <line x1="10" y1="58" x2="32" y2="34" stroke="#d4a017" stroke-width="1.2" opacity="0.45"/>
-                        <line x1="76" y1="58" x2="54" y2="34" stroke="#d4a017" stroke-width="1.2" opacity="0.45"/>
-                        <circle cx="10" cy="10" r="4" fill="#d4a017"/><circle cx="76" cy="10" r="4" fill="#d4a017"/>
-                        <circle cx="10" cy="58" r="4" fill="#d4a017"/><circle cx="76" cy="58" r="4" fill="#d4a017"/>
-                        <text x="26" y="54" font-family="Fraunces, serif" font-size="52" font-weight="700" fill="#d4a017">1</text>
-                        <text x="43" y="54" font-family="Fraunces, serif" font-size="40" font-weight="700" fill="#fff">n</text>
-                    </svg>
-                    <svg class="wordmark" viewBox="0 0 130 36" xmlns="http://www.w3.org/2000/svg">
-                        <text x="2" y="28" font-family="Fraunces, serif" font-size="28" font-weight="700" fill="#fff" letter-spacing="-0.02em"><tspan fill="#d4a017">1</tspan>nFlow</text>
-                    </svg>
-                </div>
-                <p>The enterprise platform for digital transformation. 1nFlow‑LOS is the first vertical — already trusted by 40+ banks across Indonesia. Built on boring, battle‑tested technology that will still be running a decade from now.</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-col"><h5>Platform</h5><a href="#product" class="clickable">1nFlow‑LOS</a><a href="#vision" class="clickable">Collections</a><a href="#vision" class="clickable">Treasury</a><a href="#vision" class="clickable">CDD</a></div>
-                <div class="footer-col"><h5>Company</h5><a href="#cta" class="clickable">Contact</a><a href="#architecture" class="clickable">Technology</a><a href="#features" class="clickable">Compliance</a><a href="#cta" class="clickable">Demo</a></div>
-                <div class="footer-col"><h5>Connect</h5><a href="mailto:santo@1nflow.ai">santo@1nflow.ai</a><a href="tel:+6281910173445">+62 819 1017 3445</a><a href="https://wa.me/6281910173445">WhatsApp</a></div>
-            </div>
+      <div class="product-visual" style="--accent: #d4a017;">
+        <!-- BPMN flow visual -->
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="los-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#11193a"/><stop offset="100%" stop-color="#080d1f"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#los-grad)" rx="8"/>
+          <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="#d4a017" font-weight="700" letter-spacing="2">BPMN · 8 STAGES</text>
+          <text x="20" y="48" font-family="Fraunces, serif" font-size="14" fill="#e8ecf8" font-weight="600">Loan origination workflow</text>
+
+          <!-- Row 1: stages 1-4 (done) -->
+          <g>
+            <rect x="20" y="72" width="124" height="56" fill="#10b981" rx="4"/>
+            <text x="82" y="92" font-family="JetBrains Mono, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">01 · SUBMISSION</text>
+            <text x="82" y="106" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">RM intake</text>
+            <text x="82" y="118" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">✓ Apr 22 · 09:00</text>
+            <line x1="144" y1="100" x2="156" y2="100" stroke="#1f2a52"/>
+
+            <rect x="156" y="72" width="124" height="56" fill="#10b981" rx="4"/>
+            <text x="218" y="92" font-family="JetBrains Mono, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">02 · KYC</text>
+            <text x="218" y="106" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">Liveness · Dukcapil</text>
+            <text x="218" y="118" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">✓ Apr 22 · 09:25</text>
+            <line x1="280" y1="100" x2="292" y2="100" stroke="#1f2a52"/>
+
+            <rect x="292" y="72" width="124" height="56" fill="#10b981" rx="4"/>
+            <text x="354" y="92" font-family="JetBrains Mono, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">03 · ENRICHMENT</text>
+            <text x="354" y="106" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">SLIK · DJP · CAMS</text>
+            <text x="354" y="118" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">✓ Apr 22 · 09:32</text>
+            <line x1="416" y1="100" x2="428" y2="100" stroke="#1f2a52"/>
+
+            <rect x="428" y="72" width="124" height="56" fill="#10b981" rx="4"/>
+            <text x="490" y="92" font-family="JetBrains Mono, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="700">04 · VERIFY</text>
+            <text x="490" y="106" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">Site visit · CAMS</text>
+            <text x="490" y="118" font-family="Inter, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)" text-anchor="middle">✓ Apr 22 · 14:15</text>
+          </g>
+
+          <!-- Connector down -->
+          <path d="M 490 128 L 490 144 L 82 144 L 82 160" stroke="#1f2a52" stroke-width="0.8" fill="none"/>
+
+          <!-- Row 2: stage 5 (current) + 6-8 (pending) -->
+          <g>
+            <rect x="20" y="160" width="124" height="64" fill="#d4a017" stroke="#f4c84a" stroke-width="1.5" rx="4"/>
+            <text x="82" y="180" font-family="JetBrains Mono, monospace" font-size="9" fill="#0b1e4b" text-anchor="middle" font-weight="700">05 · UNDERWRITE</text>
+            <text x="82" y="194" font-family="Inter, sans-serif" font-size="9" fill="#0b1e4b" text-anchor="middle" font-weight="600">DMN · 5C · AI draft</text>
+            <text x="82" y="208" font-family="Inter, sans-serif" font-size="9" fill="#92400e" text-anchor="middle" font-weight="700">⚡ IN PROGRESS</text>
+            <text x="82" y="220" font-family="Inter, sans-serif" font-size="8" fill="#92400e" text-anchor="middle">SLA: Apr 25 15:00</text>
+            <line x1="144" y1="192" x2="156" y2="192" stroke="#1f2a52" stroke-dasharray="2 2"/>
+
+            <rect x="156" y="160" width="124" height="64" fill="#11193a" stroke="#1f2a52" rx="4"/>
+            <text x="218" y="180" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b7398" text-anchor="middle" font-weight="700">06 · COMMITTEE</text>
+            <text x="218" y="194" font-family="Inter, sans-serif" font-size="9" fill="#6b7398" text-anchor="middle">Direksi vote</text>
+            <text x="218" y="212" font-family="Inter, sans-serif" font-size="9" fill="#6b7398" text-anchor="middle">pending</text>
+            <line x1="280" y1="192" x2="292" y2="192" stroke="#1f2a52" stroke-dasharray="2 2"/>
+
+            <rect x="292" y="160" width="124" height="64" fill="#11193a" stroke="#1f2a52" rx="4"/>
+            <text x="354" y="180" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b7398" text-anchor="middle" font-weight="700">07 · ACCEPT</text>
+            <text x="354" y="194" font-family="Inter, sans-serif" font-size="9" fill="#6b7398" text-anchor="middle">e-Sign · meterai</text>
+            <text x="354" y="212" font-family="Inter, sans-serif" font-size="9" fill="#6b7398" text-anchor="middle">pending</text>
+            <line x1="416" y1="192" x2="428" y2="192" stroke="#1f2a52" stroke-dasharray="2 2"/>
+
+            <rect x="428" y="160" width="124" height="64" fill="#11193a" stroke="#1f2a52" rx="4"/>
+            <text x="490" y="180" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b7398" text-anchor="middle" font-weight="700">08 · DISBURSE</text>
+            <text x="490" y="194" font-family="Inter, sans-serif" font-size="9" fill="#6b7398" text-anchor="middle">BI Fast → BCA</text>
+            <text x="490" y="212" font-family="Inter, sans-serif" font-size="9" fill="#6b7398" text-anchor="middle">pending</text>
+          </g>
+
+          <!-- Live indicators -->
+          <g transform="translate(20 250)">
+            <rect width="532" height="100" fill="rgba(212,160,23,0.08)" stroke="rgba(212,160,23,0.3)" rx="4"/>
+            <text x="20" y="22" font-family="JetBrains Mono, monospace" font-size="10" fill="#d4a017" font-weight="700" letter-spacing="2">CURRENT APPLICATION</text>
+            <text x="20" y="42" font-family="Fraunces, serif" font-size="13" fill="#e8ecf8" font-weight="600">Siti Aminah · Toko Aminah Snack</text>
+            <text x="20" y="58" font-family="Inter, sans-serif" font-size="10.5" fill="#a0a8c8">UMKM Modal Kerja · Rp 150 jt for 24 bulan</text>
+            <text x="20" y="74" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b7398">APP-2026-000412 · Cibubur, Jakarta Timur</text>
+            <text x="20" y="90" font-family="Inter, sans-serif" font-size="9" fill="#10b981">● DBR 32% · LTV 61% · SLIK Kol 1 · Liveness 0.987</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- VERTICAL: APPRAISAL -->
+<!-- ====================================================== -->
+<section id="vertical-appraisal" style="background: var(--bg);">
+  <div class="wrap">
+    <div class="product-row reverse">
+      <div class="product-text" style="--accent: #14b8a6;">
+        <div class="eyebrow" style="color: #14b8a6;">Vertical 02 · Live</div>
+        <h2>1nFlow<span style="color: #14b8a6;">-Appraisal</span></h2>
+        <p class="lede">Manage every collateral valuation through one pipeline — KJPP eksternal + internal appraisers, mobile field capture with GPS-tagged photos, comparable analysis, senior review, signed reports. POJK 17/2020 + SPI 2018 compliant.</p>
+        <ul class="product-features">
+          <li>
+            <span class="feat-icon">📍</span>
+            <span class="feat-text"><strong>MAPPI directory lookup.</strong> Search 80+ Indonesian KJPPs by license tier (T, S, J), region, and specialty. Tier-based routing with capacity awareness.</span>
+          </li>
+          <li>
+            <span class="feat-icon">📱</span>
+            <span class="feat-text"><strong>Mobile field-capture app.</strong> iOS &amp; Android. Offline-first. GPS-tagged photos, BPKB/SHM scan with OCR, voice notes. Syncs when back online.</span>
+          </li>
+          <li>
+            <span class="feat-icon">📐</span>
+            <span class="feat-text"><strong>Three valuation methods built in.</strong> Pendekatan Pasar (market comparison), Pendekatan Biaya (DRC), Pendekatan Pendapatan (income approach). SPI 2018 templates.</span>
+          </li>
+          <li>
+            <span class="feat-icon">⏰</span>
+            <span class="feat-text"><strong>POJK 40 revaluasi auto-tracker.</strong> 18-month and 30-month cycles auto-scheduled. Stop missing OJK deadlines because of an Excel reminder that didn't fire.</span>
+          </li>
+        </ul>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <a href="#contact" class="btn btn-primary" style="background: #14b8a6; color: #fff;">Request module deck <span class="arrow">→</span></a>
+          <a href="#contact" class="btn btn-ghost">Talk to sales</a>
         </div>
-        <div class="footer-bottom">&copy; 2024 1nFlow. All rights reserved. &nbsp;|&nbsp; Source code available under commercial license. Escrow available. &nbsp;|&nbsp; DJKI trademark registration in progress.</div>
-    </footer>
+      </div>
 
-    <script>
-        const cursorDot = document.getElementById('cursorDot');
-        const cursorRing = document.getElementById('cursorRing');
-        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
-            cursorDot.style.left = mouseX + 'px'; cursorDot.style.top = mouseY + 'px';
-        });
-        function animateCursor() {
-            ringX += (mouseX - ringX) * 0.22; ringY += (mouseY - ringY) * 0.22;
-            cursorRing.style.left = ringX + 'px'; cursorRing.style.top = ringY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-        const hoverTargets = document.querySelectorAll('a, button, .btn, [role="button"], input, textarea, select, .clickable, .vert-tile, .workflow-card, .feature-card, .roadmap-card, .arch-layer');
-        hoverTargets.forEach(el => {
-            el.addEventListener('mouseenter', () => { cursorRing.classList.add('hovering'); cursorDot.style.width='5px'; cursorDot.style.height='5px'; cursorDot.style.background='var(--navy)'; });
-            el.addEventListener('mouseleave', () => { cursorRing.classList.remove('hovering'); cursorDot.style.width='8px'; cursorDot.style.height='8px'; cursorDot.style.background='var(--gold)'; });
-        });
-        document.addEventListener('mousedown', () => { cursorDot.classList.add('clicking'); cursorRing.classList.add('clicking'); });
-        document.addEventListener('mouseup', () => { cursorDot.classList.remove('clicking'); cursorRing.classList.remove('clicking'); });
+      <div class="product-visual" style="--accent: #14b8a6;">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="400" fill="#11193a" rx="8"/>
+          <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="#14b8a6" font-weight="700" letter-spacing="2">APR-2026-000178 · CIBUBUR SHM</text>
+          <text x="20" y="50" font-family="Fraunces, serif" font-size="14" fill="#e8ecf8" font-weight="600">Tanah &amp; Bangunan · Pendekatan Pasar</text>
 
-        const navbar = document.getElementById('navbar');
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navLinks = document.getElementById('navLinks');
-        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
-        mobileToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
-        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+          <!-- Photo grid -->
+          <g transform="translate(20 70)">
+            <rect width="120" height="84" fill="#e0d4b0"/>
+            <rect x="32" y="30" width="56" height="40" fill="#a8754a"/>
+            <polygon points="32,30 60,16 88,30" fill="#7a3320"/>
+            <rect x="56" y="42" width="8" height="28" fill="#3a2a1e"/>
+            <rect x="38" y="36" width="8" height="8" fill="#88c8e8"/>
+            <rect x="74" y="36" width="8" height="8" fill="#88c8e8"/>
+            <rect y="74" width="120" height="10" fill="rgba(0,0,0,0.7)"/>
+            <text x="6" y="82" font-family="ui-monospace, monospace" font-size="6.5" fill="#fff">11:32 · -6.3621, 106.8923</text>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.animationPlayState = 'running'; observer.unobserve(entry.target); } });
-        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-        document.querySelectorAll('.animate-in, .animate-in-delay-1, .animate-in-delay-2, .animate-in-delay-3, .animate-in-delay-4').forEach(el => {
-            el.style.animationPlayState = 'paused'; observer.observe(el);
-        });
-        setTimeout(() => {
-            document.querySelectorAll('.animate-in, .animate-in-delay-1, .animate-in-delay-2, .animate-in-delay-3, .animate-in-delay-4').forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) el.style.animationPlayState = 'running';
-            });
-        }, 200);
+            <rect x="130" width="120" height="84" fill="#fff"/>
+            <rect x="156" y="14" width="68" height="56" fill="#fef9e6" stroke="#d4a017"/>
+            <text x="190" y="32" font-family="Inter, sans-serif" font-size="8" fill="#0b1e4b" text-anchor="middle" font-weight="700">SERTIFIKAT</text>
+            <text x="190" y="44" font-family="Inter, sans-serif" font-size="7" fill="#0b1e4b" text-anchor="middle">HAK MILIK</text>
+            <text x="190" y="56" font-family="ui-monospace, monospace" font-size="6" fill="#475569" text-anchor="middle">No. 02374</text>
+            <rect x="130" y="74" width="120" height="10" fill="rgba(0,0,0,0.7)"/>
+            <text x="136" y="82" font-family="ui-monospace, monospace" font-size="6.5" fill="#fff">11:35 · OCR scan</text>
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    const offset = 82;
-                    const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top: position, behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+            <rect x="260" width="120" height="84" fill="#a89070"/>
+            <rect x="278" y="22" width="84" height="44" fill="#6a5236"/>
+            <rect x="284" y="28" width="14" height="24" fill="#1a1a1a"/>
+            <rect x="302" y="28" width="14" height="24" fill="#1a1a1a"/>
+            <rect x="320" y="28" width="14" height="24" fill="#1a1a1a"/>
+            <rect x="338" y="28" width="14" height="24" fill="#1a1a1a"/>
+            <rect x="278" y="56" width="84" height="10" fill="#3a2a1e"/>
+            <rect x="260" y="74" width="120" height="10" fill="rgba(0,0,0,0.7)"/>
+            <text x="266" y="82" font-family="ui-monospace, monospace" font-size="6.5" fill="#fff">11:48 · interior</text>
+
+            <rect x="390" width="170" height="84" fill="#080d1f" stroke="#14b8a6"/>
+            <text x="404" y="20" font-family="JetBrains Mono, monospace" font-size="8" fill="#14b8a6" font-weight="700" letter-spacing="1">12 PHOTOS · GPS</text>
+            <text x="404" y="36" font-family="Inter, sans-serif" font-size="9" fill="#a0a8c8">Captured by</text>
+            <text x="404" y="48" font-family="Inter, sans-serif" font-size="9" fill="#e8ecf8" font-weight="600">Hendra Wijaya, MAPPI-T</text>
+            <text x="404" y="62" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398">License PB-1.05.00789</text>
+            <text x="404" y="74" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398">KJPP Hendra &amp; Rekan</text>
+          </g>
+
+          <!-- Comparable rows -->
+          <g transform="translate(20 184)">
+            <text font-family="JetBrains Mono, monospace" font-size="9" fill="#14b8a6" font-weight="700" letter-spacing="2" y="0">3 COMPARABLES · CIBUBUR</text>
+
+            <rect y="14" width="540" height="42" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+            <text x="14" y="32" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Jl. Cibubur Asri No. 18</text>
+            <text x="14" y="46" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">110 m² · Mar 2026 · −400m</text>
+            <text x="380" y="32" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" text-anchor="end">Rp 220 jt</text>
+            <text x="430" y="32" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="end">+8%</text>
+            <text x="528" y="32" font-family="Fraunces, serif" font-size="13" fill="#14b8a6" text-anchor="end" font-weight="700">Rp 237 jt</text>
+
+            <rect y="60" width="540" height="42" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+            <text x="14" y="78" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Cibubur Indah B-08</text>
+            <text x="14" y="92" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">125 m² · Feb 2026 · +200m</text>
+            <text x="380" y="78" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" text-anchor="end">Rp 260 jt</text>
+            <text x="430" y="78" font-family="Inter, sans-serif" font-size="11" fill="#f43f5e" text-anchor="end">−4%</text>
+            <text x="528" y="78" font-family="Fraunces, serif" font-size="13" fill="#14b8a6" text-anchor="end" font-weight="700">Rp 250 jt</text>
+
+            <rect y="106" width="540" height="42" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+            <text x="14" y="124" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Cibubur Permai No. 5</text>
+            <text x="14" y="138" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">115 m² · Jan 2026 · −600m</text>
+            <text x="380" y="124" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" text-anchor="end">Rp 235 jt</text>
+            <text x="430" y="124" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="end">+3%</text>
+            <text x="528" y="124" font-family="Fraunces, serif" font-size="13" fill="#14b8a6" text-anchor="end" font-weight="700">Rp 242 jt</text>
+
+            <rect y="158" width="540" height="32" fill="rgba(20,184,166,0.08)" stroke="#14b8a6" stroke-width="1" rx="3"/>
+            <text x="14" y="178" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Weighted average · Final</text>
+            <text x="528" y="178" font-family="Fraunces, serif" font-size="16" fill="#14b8a6" text-anchor="end" font-weight="700">Rp 245 jt</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- VERTICAL: COLLECTIONS -->
+<!-- ====================================================== -->
+<section id="vertical-collections">
+  <div class="wrap">
+    <div class="product-row">
+      <div class="product-text" style="--accent: #10b981;">
+        <div class="eyebrow" style="color: #10b981;">Vertical 03 · Q3 2026</div>
+        <h2>1nFlow<span style="color: #10b981;">-Collections</span></h2>
+        <p class="lede">An NPL workflow engine that orchestrates soft collection, hard collection, restructuring, and repossession through a single audit-logged pipeline. WhatsApp, SMS, voice, and field visit channels — coordinated rather than chaotic.</p>
+        <ul class="product-features">
+          <li>
+            <span class="feat-icon">💬</span>
+            <span class="feat-text"><strong>Multi-channel campaigns.</strong> WhatsApp Business API, SMS via Telkom / Indosat, voice IVR, RM field visits — all logged in one timeline per debtor. POJK 22/2024 collection-conduct compliance.</span>
+          </li>
+          <li>
+            <span class="feat-icon">🔄</span>
+            <span class="feat-text"><strong>Restructuring workflows.</strong> Reschedule, recondition, refinance — POJK 40/2019 compliant. Auto-recalculates DBR, generates Akta Perubahan, updates SLIK.</span>
+          </li>
+          <li>
+            <span class="feat-icon">📍</span>
+            <span class="feat-text"><strong>Field collection app.</strong> Mobile app for field officers. Visit logs, payment promises, receipts, GPS verification. Syncs to back-office in real time.</span>
+          </li>
+          <li>
+            <span class="feat-icon">⚖️</span>
+            <span class="feat-text"><strong>Recovery &amp; repossession tracking.</strong> Lelang KPKNL workflows, lawyer assignment, recovery rate analytics, write-off accounting integration.</span>
+          </li>
+        </ul>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <a href="#contact" class="btn btn-primary" style="background: #10b981; color: #fff;">Join the early-access list <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="product-visual" style="--accent: #10b981;">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="400" fill="#11193a" rx="8"/>
+          <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="#10b981" font-weight="700" letter-spacing="2">DEBTOR TIMELINE</text>
+          <text x="20" y="48" font-family="Fraunces, serif" font-size="14" fill="#e8ecf8" font-weight="600">CR-2026-001893 · Hadi Prabowo · KKB</text>
+
+          <!-- Status header -->
+          <g transform="translate(20 70)">
+            <rect width="560" height="40" fill="rgba(16,185,129,0.08)" stroke="#10b981" rx="4"/>
+            <text x="14" y="18" font-family="JetBrains Mono, monospace" font-size="9" fill="#10b981" font-weight="700">DPK · 31 days overdue · Rp 4.2 jt</text>
+            <text x="14" y="32" font-family="Inter, sans-serif" font-size="10" fill="#a0a8c8">Last contact: WhatsApp Apr 24 · response: read, no reply</text>
+          </g>
+
+          <!-- Timeline events -->
+          <g transform="translate(20 130)">
+            <line x1="20" y1="0" x2="20" y2="240" stroke="#1f2a52" stroke-width="2"/>
+
+            <!-- Event 1 -->
+            <circle cx="20" cy="14" r="6" fill="#10b981"/>
+            <rect x="40" y="2" width="520" height="40" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+            <text x="52" y="18" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">WhatsApp reminder · soft</text>
+            <text x="52" y="32" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">"Pak Hadi, kami ingatkan tagihan KKB jatuh tempo 27 Mar..."</text>
+            <text x="548" y="18" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b7398" text-anchor="end">Apr 24 09:00</text>
+            <text x="548" y="32" font-family="JetBrains Mono, monospace" font-size="8" fill="#10b981" text-anchor="end">✓ DELIVERED · READ</text>
+
+            <!-- Event 2 -->
+            <circle cx="20" cy="68" r="6" fill="#fbbf24"/>
+            <rect x="40" y="56" width="520" height="40" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+            <text x="52" y="72" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">SMS reminder · escalation</text>
+            <text x="52" y="86" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">DPK 7d · auto-routed by DMN</text>
+            <text x="548" y="72" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b7398" text-anchor="end">Apr 25 10:00</text>
+            <text x="548" y="86" font-family="JetBrains Mono, monospace" font-size="8" fill="#10b981" text-anchor="end">✓ SENT</text>
+
+            <!-- Event 3 -->
+            <circle cx="20" cy="122" r="6" fill="#fbbf24"/>
+            <rect x="40" y="110" width="520" height="40" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+            <text x="52" y="126" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Voice IVR · payment reminder</text>
+            <text x="52" y="140" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">2 attempts · 1 answered (35s) · IVR option 2 selected</text>
+            <text x="548" y="126" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b7398" text-anchor="end">Apr 26 11:30</text>
+            <text x="548" y="140" font-family="JetBrains Mono, monospace" font-size="8" fill="#fbbf24" text-anchor="end">⚠ PROMISE TO PAY</text>
+
+            <!-- Event 4 - current -->
+            <circle cx="20" cy="176" r="8" fill="#10b981" stroke="#fff" stroke-width="1.5"/>
+            <rect x="40" y="160" width="520" height="48" fill="rgba(16,185,129,0.1)" stroke="#10b981" stroke-width="1.5" rx="3"/>
+            <text x="52" y="178" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Field visit scheduled · RM Maya S.</text>
+            <text x="52" y="192" font-family="Inter, sans-serif" font-size="9" fill="#a0a8c8">Apr 28 14:00 · Jl. Kemang Selatan 14B · GPS-verified</text>
+            <text x="52" y="204" font-family="JetBrains Mono, monospace" font-size="8" fill="#10b981">⚡ CURRENT · PROMISE: Rp 4.2 jt by Apr 30</text>
+            <text x="548" y="178" font-family="JetBrains Mono, monospace" font-size="8" fill="#10b981" text-anchor="end">SCHEDULED</text>
+
+            <!-- Event 5 - future -->
+            <circle cx="20" cy="232" r="6" fill="#11193a" stroke="#6b7398"/>
+            <rect x="40" y="220" width="520" height="32" fill="#11193a" stroke="#1f2a52" stroke-dasharray="3 2" rx="3"/>
+            <text x="52" y="236" font-family="Inter, sans-serif" font-size="10" fill="#6b7398" font-weight="600">If not paid · escalate to hard collection</text>
+            <text x="52" y="248" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">DMN routes to legal · POJK 22/2024 conduct check</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- VERTICAL: TREASURY -->
+<!-- ====================================================== -->
+<section id="vertical-treasury" style="background: var(--bg);">
+  <div class="wrap">
+    <div class="product-row reverse">
+      <div class="product-text" style="--accent: #3b82f6;">
+        <div class="eyebrow" style="color: #3b82f6;">Vertical 04 · Q1 2027</div>
+        <h2>1nFlow<span style="color: #3b82f6;">-Treasury</span></h2>
+        <p class="lede">Treasury &amp; ALM for tier-2 banks and BPRs that need real-time visibility into liquidity, GAP, and BMPK without buying a tier-1 treasury system. Integrated directly with your core banking and 1nFlow-LOS pipeline.</p>
+        <ul class="product-features">
+          <li>
+            <span class="feat-icon">💧</span>
+            <span class="feat-text"><strong>Liquidity dashboard.</strong> Real-time cash position, GWM tracking, expected inflows/outflows from origination pipeline. POJK 42/2015 compliant.</span>
+          </li>
+          <li>
+            <span class="feat-icon">📈</span>
+            <span class="feat-text"><strong>GAP analysis &amp; rate sensitivity.</strong> Repricing GAP, duration GAP, EVE simulation. Stress-test scenarios per POJK 12/2018.</span>
+          </li>
+          <li>
+            <span class="feat-icon">⚠️</span>
+            <span class="feat-text"><strong>BMPK monitoring.</strong> POJK 23/2022. Auto-alerts when single-borrower or related-party exposure approaches 25% / 10% thresholds. Pre-flight check before origination commits.</span>
+          </li>
+          <li>
+            <span class="feat-icon">🏦</span>
+            <span class="feat-text"><strong>Money market &amp; placement workflows.</strong> Interbank lending/borrowing, deposito on-call, BI-Rate operations. Counterparty limits enforced via DMN.</span>
+          </li>
+        </ul>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <a href="#contact" class="btn btn-primary" style="background: #3b82f6; color: #fff;">Roadmap briefing <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="product-visual" style="--accent: #3b82f6;">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="400" fill="#11193a" rx="8"/>
+          <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="#3b82f6" font-weight="700" letter-spacing="2">TREASURY DASHBOARD · LIVE</text>
+
+          <!-- 4-up KPI -->
+          <g transform="translate(20 50)">
+            <rect width="135" height="64" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <text x="14" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#3b82f6">CASH POSITION</text>
+            <text x="14" y="42" font-family="Fraunces, serif" font-size="18" fill="#e8ecf8" font-weight="700">Rp 248 M</text>
+            <text x="14" y="58" font-family="Inter, sans-serif" font-size="9" fill="#10b981">↑ Rp 12 M today</text>
+
+            <rect x="142" width="135" height="64" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <text x="156" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#3b82f6">GWM (RR)</text>
+            <text x="156" y="42" font-family="Fraunces, serif" font-size="18" fill="#e8ecf8" font-weight="700">7.2%</text>
+            <text x="156" y="58" font-family="Inter, sans-serif" font-size="9" fill="#10b981">✓ above 6.5% min</text>
+
+            <rect x="284" width="135" height="64" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <text x="298" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#3b82f6">LDR</text>
+            <text x="298" y="42" font-family="Fraunces, serif" font-size="18" fill="#e8ecf8" font-weight="700">82.4%</text>
+            <text x="298" y="58" font-family="Inter, sans-serif" font-size="9" fill="#10b981">✓ within band</text>
+
+            <rect x="426" width="135" height="64" fill="rgba(244,63,94,0.08)" stroke="#f43f5e" rx="4"/>
+            <text x="440" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#f43f5e">BMPK ALERT</text>
+            <text x="440" y="42" font-family="Fraunces, serif" font-size="18" fill="#f43f5e" font-weight="700">23.8%</text>
+            <text x="440" y="58" font-family="Inter, sans-serif" font-size="9" fill="#f43f5e">⚠ near 25% limit</text>
+          </g>
+
+          <!-- GAP chart -->
+          <g transform="translate(20 142)">
+            <text font-family="JetBrains Mono, monospace" font-size="9" fill="#3b82f6" font-weight="700" letter-spacing="2" y="0">REPRICING GAP · 12-MONTH</text>
+            <rect y="14" width="540" height="170" fill="#080d1f" stroke="#1f2a52" rx="3"/>
+
+            <!-- Y axis -->
+            <line x1="50" y1="34" x2="50" y2="174" stroke="#1f2a52"/>
+            <line x1="50" y1="104" x2="530" y2="104" stroke="#1f2a52" stroke-dasharray="2 2"/>
+            <text x="44" y="38" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b7398" text-anchor="end">+50</text>
+            <text x="44" y="108" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b7398" text-anchor="end">0</text>
+            <text x="44" y="178" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b7398" text-anchor="end">−50</text>
+
+            <!-- Bars -->
+            <rect x="60"  y="60"  width="34" height="44" fill="#3b82f6" rx="2"/>
+            <rect x="100" y="78"  width="34" height="26" fill="#3b82f6" rx="2"/>
+            <rect x="140" y="84"  width="34" height="20" fill="#3b82f6" rx="2"/>
+            <rect x="180" y="92"  width="34" height="12" fill="#3b82f6" rx="2"/>
+            <rect x="220" y="104" width="34" height="14" fill="#f43f5e" rx="2"/>
+            <rect x="260" y="104" width="34" height="22" fill="#f43f5e" rx="2"/>
+            <rect x="300" y="104" width="34" height="34" fill="#f43f5e" rx="2"/>
+            <rect x="340" y="104" width="34" height="28" fill="#f43f5e" rx="2"/>
+            <rect x="380" y="104" width="34" height="18" fill="#f43f5e" rx="2"/>
+            <rect x="420" y="98"  width="34" height="6"  fill="#3b82f6" rx="2"/>
+            <rect x="460" y="92"  width="34" height="12" fill="#3b82f6" rx="2"/>
+            <rect x="500" y="86"  width="34" height="18" fill="#3b82f6" rx="2"/>
+
+            <!-- X axis labels -->
+            <text x="77"  y="166" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398" text-anchor="middle">M01</text>
+            <text x="157" y="166" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398" text-anchor="middle">M03</text>
+            <text x="237" y="166" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398" text-anchor="middle">M05</text>
+            <text x="317" y="166" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398" text-anchor="middle">M07</text>
+            <text x="397" y="166" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398" text-anchor="middle">M09</text>
+            <text x="477" y="166" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b7398" text-anchor="middle">M11</text>
+
+            <!-- Annotation -->
+            <text x="270" y="178" font-family="Inter, sans-serif" font-size="9" fill="#a0a8c8" text-anchor="middle">Asset-sensitive M1-M4 · Liability-sensitive M5-M9 · Net rebalance Q4</text>
+          </g>
+
+          <!-- BMPK detail -->
+          <g transform="translate(20 332)">
+            <rect width="540" height="48" fill="rgba(244,63,94,0.05)" stroke="rgba(244,63,94,0.3)" rx="3"/>
+            <text x="14" y="18" font-family="JetBrains Mono, monospace" font-size="9" fill="#f43f5e" font-weight="700">⚠ BMPK alert · single borrower</text>
+            <text x="14" y="32" font-family="Inter, sans-serif" font-size="10" fill="#e8ecf8" font-weight="600">PT Bumi Jaya Group · current exposure 23.8% of capital</text>
+            <text x="14" y="44" font-family="Inter, sans-serif" font-size="9" fill="#a0a8c8">2 active facilities · proposed Rp 850 jt UMKM Investasi would push to 25.6% — pre-block</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- VERTICAL: CDD -->
+<!-- ====================================================== -->
+<section id="vertical-cdd">
+  <div class="wrap">
+    <div class="product-row">
+      <div class="product-text" style="--accent: #a855f7;">
+        <div class="eyebrow" style="color: #a855f7;">Vertical 05 · Q4 2026</div>
+        <h2>1nFlow<span style="color: #a855f7;">-CDD</span></h2>
+        <p class="lede">A standalone Customer Due Diligence module for institutions that need POJK 12/2017-grade KYC/CDD without committing to a full LOS or core banking change. Plug it into your existing channels via REST.</p>
+        <ul class="product-features">
+          <li>
+            <span class="feat-icon">🔍</span>
+            <span class="feat-text"><strong>PEP &amp; sanctions screening.</strong> Domestic PEP list (KPK, BI), international sanctions (OFAC, UN, EU), adverse-media screening. Auto-rerun on schedule.</span>
+          </li>
+          <li>
+            <span class="feat-icon">📡</span>
+            <span class="feat-text"><strong>AML transaction monitoring.</strong> Behavioral rules + ML-assisted anomaly detection. Alert triage workflows. STR / SAR generation in PPATK format.</span>
+          </li>
+          <li>
+            <span class="feat-icon">🪪</span>
+            <span class="feat-text"><strong>Beneficial owner discovery.</strong> Walks corporate structures via AHU integration. UU 19/2003 compliant beneficial owner declarations.</span>
+          </li>
+          <li>
+            <span class="feat-icon">🔌</span>
+            <span class="feat-text"><strong>Plug into anything.</strong> 12 REST endpoints. Reference implementation for Oracle FLEXCUBE, Temenos T24. Webhooks on every state change.</span>
+          </li>
+        </ul>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <a href="#contact" class="btn btn-primary" style="background: #a855f7; color: #fff;">Pilot waitlist <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="product-visual" style="--accent: #a855f7;">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="400" fill="#11193a" rx="8"/>
+          <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="#a855f7" font-weight="700" letter-spacing="2">CUSTOMER · CDD-2026-04412</text>
+          <text x="20" y="48" font-family="Fraunces, serif" font-size="14" fill="#e8ecf8" font-weight="600">Siti Aminah · NIK 3174012508850001</text>
+
+          <!-- Check grid -->
+          <g transform="translate(20 70)">
+            <!-- Check 1 -->
+            <rect width="270" height="56" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <circle cx="20" cy="28" r="11" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+            <text x="20" y="32" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="700">✓</text>
+            <text x="42" y="20" font-family="JetBrains Mono, monospace" font-size="8" fill="#a855f7" font-weight="700">PEP DOMESTIC</text>
+            <text x="42" y="36" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">No match</text>
+            <text x="42" y="48" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">KPK, BI, KemenPolHuKam · screened Apr 22</text>
+
+            <!-- Check 2 -->
+            <rect x="290" width="270" height="56" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <circle cx="310" cy="28" r="11" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+            <text x="310" y="32" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="700">✓</text>
+            <text x="332" y="20" font-family="JetBrains Mono, monospace" font-size="8" fill="#a855f7" font-weight="700">SANCTIONS</text>
+            <text x="332" y="36" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">No match</text>
+            <text x="332" y="48" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">OFAC, UN, EU, DTTOT · screened Apr 22</text>
+
+            <!-- Check 3 -->
+            <rect y="70" width="270" height="56" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <circle cx="20" cy="98" r="11" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+            <text x="20" y="102" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="700">✓</text>
+            <text x="42" y="90" font-family="JetBrains Mono, monospace" font-size="8" fill="#a855f7" font-weight="700">DUKCAPIL</text>
+            <text x="42" y="106" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">e-KTP verified</text>
+            <text x="42" y="118" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">Match score 99.4% · biometric 0.987</text>
+
+            <!-- Check 4 -->
+            <rect x="290" y="70" width="270" height="56" fill="rgba(251,191,36,0.05)" stroke="#fbbf24" rx="4"/>
+            <circle cx="310" cy="98" r="11" fill="rgba(251,191,36,0.15)" stroke="#fbbf24"/>
+            <text x="310" y="102" font-family="Inter, sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle" font-weight="700">!</text>
+            <text x="332" y="90" font-family="JetBrains Mono, monospace" font-size="8" fill="#fbbf24" font-weight="700">ADVERSE MEDIA</text>
+            <text x="332" y="106" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">1 weak match</text>
+            <text x="332" y="118" font-family="Inter, sans-serif" font-size="9" fill="#fbbf24">Same name · different NIK · false positive</text>
+
+            <!-- Check 5 -->
+            <rect y="140" width="270" height="56" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <circle cx="20" cy="168" r="11" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+            <text x="20" y="172" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="700">✓</text>
+            <text x="42" y="160" font-family="JetBrains Mono, monospace" font-size="8" fill="#a855f7" font-weight="700">BENEFICIAL OWNER</text>
+            <text x="42" y="176" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">Self · 100%</text>
+            <text x="42" y="188" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">UMKM perorangan · no corporate layer</text>
+
+            <!-- Check 6 -->
+            <rect x="290" y="140" width="270" height="56" fill="#080d1f" stroke="#1f2a52" rx="4"/>
+            <circle cx="310" cy="168" r="11" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+            <text x="310" y="172" font-family="Inter, sans-serif" font-size="11" fill="#10b981" text-anchor="middle" font-weight="700">✓</text>
+            <text x="332" y="160" font-family="JetBrains Mono, monospace" font-size="8" fill="#a855f7" font-weight="700">RISK SCORE</text>
+            <text x="332" y="176" font-family="Inter, sans-serif" font-size="11" fill="#e8ecf8" font-weight="600">LOW (12 / 100)</text>
+            <text x="332" y="188" font-family="Inter, sans-serif" font-size="9" fill="#6b7398">UMKM · Rp 150 jt · domestic</text>
+          </g>
+
+          <!-- Decision -->
+          <g transform="translate(20 290)">
+            <rect width="560" height="84" fill="rgba(168,85,247,0.08)" stroke="#a855f7" rx="4"/>
+            <text x="14" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#a855f7" font-weight="700" letter-spacing="2">CDD DECISION</text>
+            <text x="14" y="42" font-family="Fraunces, serif" font-size="16" fill="#e8ecf8" font-weight="700">Approved · Standard CDD</text>
+            <text x="14" y="58" font-family="Inter, sans-serif" font-size="10.5" fill="#a0a8c8">No PEP, no sanctions, no STR triggers. Adverse-media false positive cleared by analyst.</text>
+            <text x="14" y="74" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b7398">Audit: cdd-decision-2026-04-22-15:42 · officer rina.f · POJK 12/2017 art. 12 met</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- CONSULTING PRACTICE -->
+<!-- ====================================================== -->
+<section class="practice-section" id="consulting">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Consulting Practice</div>
+      <h2>The team that ships the platform<br/>also ships your transformation.</h2>
+      <p class="lede" style="margin-top: 24px;">Software alone doesn't change a bank. Most of our customers buy 1nFlow products together with the consulting engagement that operationalizes them — and a meaningful share buy the consulting on its own, with someone else's software underneath. We do both, and we don't pretend otherwise.</p>
+    </div>
+
+    <div class="practice-grid">
+
+      <!-- Digital Transformation -->
+      <div class="practice-card" style="--accent: #d4a017;">
+        <div class="practice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </div>
+        <h3>Digital Transformation</h3>
+        <p>Operating-model redesign, core-banking modernization, regulatory tech roadmaps. We don't sell PowerPoints — we build to a working pilot in 12 weeks, then walk customers through scaling.</p>
+        <ul class="product-features" style="margin-top: 0;">
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Strangler-fig core migration.</strong> AS/400, Silverlake, FOX-Pro escape paths to modern stacks without big-bang risk.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Process mining + redesign.</strong> Find the actual workflow your bank runs (not the documented one) and fix it.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Data &amp; analytics platform.</strong> Lakehouse on commodity infra. Regulatory reporting (LBU, LBBU, SLIK) automated.</span></li>
+        </ul>
+        <div class="pc-stack">
+          <span class="pc-pill">BPMN</span>
+          <span class="pc-pill">DMN</span>
+          <span class="pc-pill">Spring Boot</span>
+          <span class="pc-pill">PostgreSQL</span>
+          <span class="pc-pill">Kafka</span>
+          <span class="pc-pill">dbt</span>
+          <span class="pc-pill">Trino</span>
+          <span class="pc-pill">Metabase</span>
+        </div>
+      </div>
+
+      <!-- Cloud & Infrastructure -->
+      <div class="practice-card" style="--accent: #3b82f6;">
+        <div class="practice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+          </svg>
+        </div>
+        <h3>Cloud &amp; Infrastructure</h3>
+        <p>Indonesian banks live under PP 71/2019 data sovereignty. We architect for OJK reality — sometimes that's AWS Jakarta, sometimes it's Lintasarta, sometimes it's a Proxmox cluster in your own DC. We pick what fits.</p>
+        <ul class="product-features" style="margin-top: 0;">
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Public cloud architecture.</strong> AWS Jakarta region, GCP Jakarta region, Alibaba Cloud Indonesia. Landing zone, VPC design, IAM hardening.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>On-prem virtualization.</strong> VMware vSphere licensing migrations (post-Broadcom), Proxmox VE deployments, Nutanix HCI.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Hybrid &amp; private cloud.</strong> CBN, Lintasarta, NTT Data Center colocation. OJK audit pack templates.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Disaster recovery.</strong> RPO/RTO targets aligned with POJK 11/2022. Tabletop exercises included.</span></li>
+        </ul>
+        <div class="pc-stack">
+          <span class="pc-pill">VMware</span>
+          <span class="pc-pill">Proxmox VE</span>
+          <span class="pc-pill">Nutanix</span>
+          <span class="pc-pill">AWS</span>
+          <span class="pc-pill">GCP</span>
+          <span class="pc-pill">Terraform</span>
+          <span class="pc-pill">Ansible</span>
+          <span class="pc-pill">Kubernetes</span>
+          <span class="pc-pill">Ceph</span>
+        </div>
+      </div>
+
+      <!-- IoT & Edge -->
+      <div class="practice-card" style="--accent: #14b8a6;">
+        <div class="practice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <line x1="6" y1="10" x2="6" y2="10"/>
+            <line x1="10" y1="10" x2="10" y2="10"/>
+            <line x1="14" y1="10" x2="14" y2="10"/>
+            <line x1="18" y1="10" x2="18" y2="10"/>
+          </svg>
+        </div>
+        <h3>IoT &amp; Edge</h3>
+        <p>Sensor fleets, fleet telematics, supply-chain telemetry, agritech monitoring. Edge gateways, MQTT brokers, time-series ingest, dashboards your operations team will actually open.</p>
+        <ul class="product-features" style="margin-top: 0;">
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Industrial IoT.</strong> Manufacturing line telemetry, predictive maintenance, OEE dashboards. PLC integration via Modbus / OPC-UA.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Fleet &amp; logistics.</strong> Vehicle telematics, route optimization, cold-chain monitoring. GPS + driver behavior + fuel tracking.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Agritech.</strong> Field sensor networks (soil moisture, weather, crop), drone imagery analysis, yield forecasting.</span></li>
+        </ul>
+        <div class="pc-stack">
+          <span class="pc-pill">MQTT</span>
+          <span class="pc-pill">EMQX</span>
+          <span class="pc-pill">InfluxDB</span>
+          <span class="pc-pill">TimescaleDB</span>
+          <span class="pc-pill">Grafana</span>
+          <span class="pc-pill">Node-RED</span>
+          <span class="pc-pill">LoRaWAN</span>
+          <span class="pc-pill">ESP32</span>
+        </div>
+      </div>
+
+      <!-- Cybersecurity -->
+      <div class="practice-card" style="--accent: #f43f5e;">
+        <div class="practice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Cybersecurity</h3>
+        <p>POJK 11/2022 compliance, ISO 27001 certification path, penetration testing, SOC ramp-up. Pragmatic security for institutions that need to pass an OJK on-site exam in 90 days.</p>
+        <ul class="product-features" style="margin-top: 0;">
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Regulatory readiness.</strong> POJK 11/2022 self-assessment, gap remediation, evidence packaging for OJK examiners.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Penetration testing.</strong> External, internal, web, mobile, API. Reports written for both engineers and Direksi.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>SOC &amp; SIEM.</strong> Wazuh, Elastic SIEM, or Splunk. 24×7 monitoring with local Indonesian team.</span></li>
+        </ul>
+        <div class="pc-stack">
+          <span class="pc-pill">ISO 27001</span>
+          <span class="pc-pill">POJK 11/2022</span>
+          <span class="pc-pill">Wazuh</span>
+          <span class="pc-pill">Elastic</span>
+          <span class="pc-pill">Burp Suite</span>
+          <span class="pc-pill">Nessus</span>
+        </div>
+      </div>
+
+      <!-- Business Consulting -->
+      <div class="practice-card" style="--accent: #a855f7;">
+        <div class="practice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+            <path d="M20 8v6M23 11h-6"/>
+          </svg>
+        </div>
+        <h3>Business Consulting</h3>
+        <p>Operating model, regulatory advisory, change management. The work that decides whether the technology actually changes how your bank runs — or sits unused next to the system it was supposed to replace.</p>
+        <ul class="product-features" style="margin-top: 0;">
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Regulatory advisory.</strong> POJK interpretation, OJK fit-and-proper preparation, BMPK strategy, KUR program design.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Change management.</strong> Front-line training, branch readiness, RM enablement, AO certification programs.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Process optimization.</strong> Lean Six Sigma applied to credit, operations, treasury. With OJK reporting still passing audit.</span></li>
+        </ul>
+        <div class="pc-stack">
+          <span class="pc-pill">Lean Six Sigma</span>
+          <span class="pc-pill">PROSCI ADKAR</span>
+          <span class="pc-pill">OKR</span>
+          <span class="pc-pill">RACI</span>
+          <span class="pc-pill">Kotter 8-Step</span>
+        </div>
+      </div>
+
+      <!-- Software Engineering -->
+      <div class="practice-card" style="--accent: #10b981;">
+        <div class="practice-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Custom Software Engineering</h3>
+        <p>When 1nFlow's verticals don't fit, we build. Boring technology choices on purpose — Spring Boot, PostgreSQL, React, Kotlin/Swift mobile. Source available, escrow optional, your team can take it over.</p>
+        <ul class="product-features" style="margin-top: 0;">
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Backend services.</strong> Spring Boot, Node.js, Go. PostgreSQL, Redis, Kafka. Production-grade observability from day one.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Frontend &amp; mobile.</strong> React, Next.js, Vue. Native iOS (Swift) + Android (Kotlin), or Flutter for cross-platform.</span></li>
+          <li><span class="feat-icon">→</span><span class="feat-text"><strong>Integrations.</strong> Core banking (FLEXCUBE, T24, Silverlake), payment gateways (Midtrans, Xendit, BI Fast), SLIK iDeb, BSSN.</span></li>
+        </ul>
+        <div class="pc-stack">
+          <span class="pc-pill">Spring Boot 3</span>
+          <span class="pc-pill">Java 21</span>
+          <span class="pc-pill">Kotlin</span>
+          <span class="pc-pill">React</span>
+          <span class="pc-pill">Next.js</span>
+          <span class="pc-pill">Swift</span>
+          <span class="pc-pill">PostgreSQL</span>
+          <span class="pc-pill">Redis</span>
+          <span class="pc-pill">Kafka</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- INDUSTRIES -->
+<!-- ====================================================== -->
+<section id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Industries we serve</div>
+      <h2>Where the platform and the<br/>practice meet customers.</h2>
+    </div>
+
+    <div class="industries-grid">
+      <div class="industry-card">
+        <div class="ind-name">BPR &amp; BPRS</div>
+        <div class="ind-desc">Tier-3 lenders that need Oracle-grade workflow on a BPR-grade budget. Our anchor segment.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Tier-2 Commercial Banks</div>
+        <div class="ind-desc">BUKU 2 / 3 banks running mixed legacy + modern stacks. Strangler-fig modernization our specialty.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">BPD · Regional Banks</div>
+        <div class="ind-desc">Provincial banks with strong deposits but underweight credit infrastructure. We help close the gap.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Multifinance &amp; Leasing</div>
+        <div class="ind-desc">Vehicle finance, equipment leasing, multiguna. POJK 35/2018 compliant LOS with telematics-ready KKB.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Fintech Lending</div>
+        <div class="ind-desc">P2P, productive financing, embedded credit. POJK 10/2022 compliant origination and CDD.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Manufacturing &amp; Logistics</div>
+        <div class="ind-desc">Industrial IoT, OEE dashboards, supply chain telemetry. The non-banking half of our practice.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Agritech &amp; Cooperatives</div>
+        <div class="ind-desc">KUR Tani, koperasi simpan-pinjam, plantation finance. Bridge between agri operations and bank credit.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Government &amp; SOE</div>
+        <div class="ind-desc">Kementerian Keuangan, BUMN, regional governments. Custom workflow, regulatory reporting, data infrastructure.</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-name">Insurance · Asuransi</div>
+        <div class="ind-desc">Underwriting workflows, claim management, agency systems. POJK 78/2017 compliance built in.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- APPROACH -->
+<!-- ====================================================== -->
+<section id="approach" style="background: var(--bg);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How we work</div>
+      <h2>Four steps. No PowerPoint marathons.<br/>A working pilot in 12 weeks.</h2>
+      <p class="lede" style="margin-top: 24px;">We've watched too many bank transformation projects spend months in workshops before anything runs in production. We start by building the smallest thing that matters and showing it to your credit officer in week 4.</p>
+    </div>
+
+    <div class="approach-grid">
+      <div class="approach-step">
+        <span class="step-num">01 · DISCOVERY</span>
+        <h4>Find the actual workflow.</h4>
+        <p>Two weeks shadowing your credit officers, COO, and IT lead. We map the workflow your bank actually runs — not the one in your SOP binder.</p>
+        <ul>
+          <li>Process mining on existing logs</li>
+          <li>Stakeholder interviews (Direksi → AO)</li>
+          <li>Compliance gap baseline</li>
+          <li>Architecture-as-is documented</li>
+        </ul>
+      </div>
+
+      <div class="approach-step">
+        <span class="step-num">02 · ARCHITECT</span>
+        <h4>Design the smallest valuable thing.</h4>
+        <p>Two weeks. Target operating model, technology architecture, integration points, compliance posture. We pick the smallest thing that proves the approach.</p>
+        <ul>
+          <li>Target operating model</li>
+          <li>Technology architecture</li>
+          <li>Integration spec (REST, event)</li>
+          <li>POJK / OJK compliance map</li>
+        </ul>
+      </div>
+
+      <div class="approach-step">
+        <span class="step-num">03 · BUILD</span>
+        <h4>Six weeks to working pilot.</h4>
+        <p>Configurable products go live in week 4. Custom builds in week 6. Either way, your credit officer is clicking through the pilot before the engagement is half over.</p>
+        <ul>
+          <li>Sandbox environment week 2</li>
+          <li>UAT-ready week 4</li>
+          <li>Production-cut week 6</li>
+          <li>Officer training in parallel</li>
+        </ul>
+      </div>
+
+      <div class="approach-step">
+        <span class="step-num">04 · OPERATE</span>
+        <h4>We're still on the line in month 12.</h4>
+        <p>Most engagements include a managed-operations year — your team can take it over any time, but they don't have to on day one. We answer the pager.</p>
+        <ul>
+          <li>24×7 SLA with Indonesian team</li>
+          <li>Quarterly compliance reviews</li>
+          <li>Knowledge transfer to your team</li>
+          <li>Source escrow available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- PROOF -->
+<!-- ====================================================== -->
+<section id="proof">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What it looks like in practice</div>
+      <h2>Representative engagement profiles.</h2>
+      <p class="lede" style="margin-top: 24px;">We don't publish customer names without permission. These are anonymized profiles — same shape as engagements we've delivered, with identifying details removed.</p>
+    </div>
+
+    <div class="proof-grid">
+
+      <div class="proof-card">
+        <div class="proof-tag">Profile · BPR West Java</div>
+        <p class="quote">"We replaced an Excel-based credit pipeline with a real LOS in eleven weeks. First UMKM disbursement on the new system happened in week 8."</p>
+        <div class="proof-numbers">
+          <div class="proof-num">
+            <div class="pn-val">11 wk</div>
+            <div class="pn-lbl">Discovery → Production</div>
+          </div>
+          <div class="proof-num">
+            <div class="pn-val">−68%</div>
+            <div class="pn-lbl">Avg time-to-decision</div>
+          </div>
+        </div>
+        <div class="meta">
+          <strong>Tier-3 BPR · 14 branches</strong>
+          UMKM Modal Kerja primary product · Anonymized
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-tag">Profile · Multifinance KKB</div>
+        <p class="quote">"Telematics integration plus appraisal automation. Our field officers stopped emailing photos and started uploading them through the app. Audit packs went from 3 days to 30 minutes."</p>
+        <div class="proof-numbers">
+          <div class="proof-num">
+            <div class="pn-val">−92%</div>
+            <div class="pn-lbl">Audit-pack assembly time</div>
+          </div>
+          <div class="proof-num">
+            <div class="pn-val">2.4×</div>
+            <div class="pn-lbl">App throughput per officer</div>
+          </div>
+        </div>
+        <div class="meta">
+          <strong>Multifinance · Java &amp; Sumatra</strong>
+          KKB + Multiguna · Anonymized
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-tag">Profile · Tier-2 Bank · Cloud Migration</div>
+        <p class="quote">"Strangler-fig migration from a legacy AS/400 core. Six modules moved over twelve months. Branch operations never went offline. OJK examiners had nothing to flag."</p>
+        <div class="proof-numbers">
+          <div class="proof-num">
+            <div class="pn-val">12 mo</div>
+            <div class="pn-lbl">Full migration window</div>
+          </div>
+          <div class="proof-num">
+            <div class="pn-val">0</div>
+            <div class="pn-lbl">Branch downtime hours</div>
+          </div>
+        </div>
+        <div class="meta">
+          <strong>BUKU 2 Commercial Bank</strong>
+          AS/400 → Spring Boot + PostgreSQL · Anonymized
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-tag">Profile · Manufacturing IoT</div>
+        <p class="quote">"Twelve production lines instrumented in six weeks. OEE dashboard live before the second batch of sensors finished arriving. Plant manager checks it on his phone now."</p>
+        <div class="proof-numbers">
+          <div class="proof-num">
+            <div class="pn-val">+18%</div>
+            <div class="pn-lbl">OEE month-3 vs baseline</div>
+          </div>
+          <div class="proof-num">
+            <div class="pn-val">280</div>
+            <div class="pn-lbl">Sensors deployed</div>
+          </div>
+        </div>
+        <div class="meta">
+          <strong>Manufacturing · Bekasi</strong>
+          Industrial IoT · MQTT + InfluxDB · Anonymized
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-tag">Profile · Cooperative Lending</div>
+        <p class="quote">"We didn't have a budget for tier-1 software and didn't want to maintain a tier-3 hack. 1nFlow-LOS configured for koperasi rules gave us the workflow without the price tag."</p>
+        <div class="proof-numbers">
+          <div class="proof-num">
+            <div class="pn-val">5,400</div>
+            <div class="pn-lbl">Active members on platform</div>
+          </div>
+          <div class="proof-num">
+            <div class="pn-val">−74%</div>
+            <div class="pn-lbl">Cost vs. quoted alternative</div>
+          </div>
+        </div>
+        <div class="meta">
+          <strong>Koperasi simpan-pinjam · Yogyakarta</strong>
+          Standalone deployment · Anonymized
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="proof-tag">Profile · BPR Appraisal Module</div>
+        <p class="quote">"Started as just the appraisal module — KJPP coordination over WhatsApp was killing us. Within six months we'd added the LOS and CAMS. The path made itself."</p>
+        <div class="proof-numbers">
+          <div class="proof-num">
+            <div class="pn-val">3.2 d</div>
+            <div class="pn-lbl">Avg TAT, was 9.5 d</div>
+          </div>
+          <div class="proof-num">
+            <div class="pn-val">100%</div>
+            <div class="pn-lbl">Revaluasi POJK 40 on-time</div>
+          </div>
+        </div>
+        <div class="meta">
+          <strong>Tier-3 BPR · Central Java</strong>
+          Appraisal-first → full platform · Anonymized
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- CONTACT -->
+<!-- ====================================================== -->
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="section-head" style="text-align: center;">
+      <div class="eyebrow" style="justify-content: center;">Let's talk</div>
+      <h2>Bring us your stuck application.<br/>We'll make it move.</h2>
+      <p class="lede" style="margin: 24px auto 0;">A 30-minute working session at your office. No slides. We come with 1nFlow loaded with one of <em>your</em> applications, your credit officer drives, and you decide whether you want a second meeting.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-form">
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row split">
+            <div>
+              <label>Your name</label>
+              <input type="text" name="name" placeholder="Pak / Bu / etc." required>
+            </div>
+            <div>
+              <label>Role</label>
+              <input type="text" name="role" placeholder="Direksi · CTO · COO" required>
+            </div>
+          </div>
+          <div class="form-row split">
+            <div>
+              <label>Institution</label>
+              <input type="text" name="institution" placeholder="Bank / multifinance / koperasi" required>
+            </div>
+            <div>
+              <label>Work email</label>
+              <input type="email" name="email" placeholder="you@institution.co.id" required>
+            </div>
+          </div>
+          <div class="form-row split">
+            <div>
+              <label>WhatsApp</label>
+              <input type="tel" name="whatsapp" placeholder="+62 ...">
+            </div>
+            <div>
+              <label>Interested in</label>
+              <select name="interest">
+                <option>1nFlow-LOS</option>
+                <option>1nFlow-Appraisal</option>
+                <option>1nFlow-Collections (waitlist)</option>
+                <option>1nFlow-Treasury (roadmap)</option>
+                <option>1nFlow-CDD (waitlist)</option>
+                <option>Cloud / infrastructure</option>
+                <option>IoT / edge</option>
+                <option>Custom engagement</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>What's the situation</label>
+            <textarea name="message" rows="4" placeholder="A few sentences — what you have today, what's not working, what you'd like to look at."></textarea>
+          </div>
+          <div class="submit-row">
+            <span class="note">We reply within one business day. Indonesian or English — your choice.</span>
+            <button type="submit" class="btn btn-primary">Send <span class="arrow">→</span></button>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-side">
+        <h2 style="font-size: 28px;">Or reach out directly.</h2>
+        <p style="color: var(--text-dim); margin-top: 12px;">If a form is the wrong shape for what you want to ask, just write to Santo. Read every message himself.</p>
+
+        <div class="contact-channels">
+          <div class="contact-channel">
+            <div class="cc-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="cc-meta">
+              <div class="cc-meta-lbl">Email</div>
+              <a href="mailto:santo@1nflow.ai" class="cc-meta-val">santo@1nflow.ai</a>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="cc-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="cc-meta">
+              <div class="cc-meta-lbl">Phone</div>
+              <div class="cc-meta-val">+62 819 1017 3445</div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="cc-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div class="cc-meta">
+              <div class="cc-meta-lbl">WhatsApp</div>
+              <a href="https://wa.me/6281910173445" class="cc-meta-val">wa.me/6281910173445</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-qr">
+          <div class="qr-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 37 37" shape-rendering="crispEdges"><rect x="-4" y="-4" width="37" height="37" fill="#fff"/><path d="M0,0h1v1h-1zM1,0h1v1h-1zM2,0h1v1h-1zM3,0h1v1h-1zM4,0h1v1h-1zM5,0h1v1h-1zM6,0h1v1h-1zM9,0h1v1h-1zM10,0h1v1h-1zM14,0h1v1h-1zM19,0h1v1h-1zM20,0h1v1h-1zM22,0h1v1h-1zM23,0h1v1h-1zM24,0h1v1h-1zM25,0h1v1h-1zM26,0h1v1h-1zM27,0h1v1h-1zM28,0h1v1h-1zM0,1h1v1h-1zM6,1h1v1h-1zM11,1h1v1h-1zM16,1h1v1h-1zM18,1h1v1h-1zM20,1h1v1h-1zM22,1h1v1h-1zM28,1h1v1h-1zM0,2h1v1h-1zM2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM6,2h1v1h-1zM11,2h1v1h-1zM14,2h1v1h-1zM15,2h1v1h-1zM17,2h1v1h-1zM22,2h1v1h-1zM24,2h1v1h-1zM25,2h1v1h-1zM26,2h1v1h-1zM28,2h1v1h-1zM0,3h1v1h-1zM2,3h1v1h-1zM3,3h1v1h-1zM4,3h1v1h-1zM6,3h1v1h-1zM9,3h1v1h-1zM10,3h1v1h-1zM11,3h1v1h-1zM13,3h1v1h-1zM16,3h1v1h-1zM19,3h1v1h-1zM20,3h1v1h-1zM22,3h1v1h-1zM24,3h1v1h-1zM25,3h1v1h-1zM26,3h1v1h-1zM28,3h1v1h-1zM0,4h1v1h-1zM2,4h1v1h-1zM3,4h1v1h-1zM4,4h1v1h-1zM6,4h1v1h-1zM9,4h1v1h-1zM20,4h1v1h-1zM22,4h1v1h-1zM24,4h1v1h-1zM25,4h1v1h-1zM26,4h1v1h-1zM28,4h1v1h-1zM0,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM12,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM17,5h1v1h-1zM19,5h1v1h-1zM20,5h1v1h-1zM22,5h1v1h-1zM28,5h1v1h-1zM0,6h1v1h-1zM1,6h1v1h-1zM2,6h1v1h-1zM3,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM12,6h1v1h-1zM14,6h1v1h-1zM16,6h1v1h-1zM18,6h1v1h-1zM20,6h1v1h-1zM22,6h1v1h-1zM23,6h1v1h-1zM24,6h1v1h-1zM25,6h1v1h-1zM26,6h1v1h-1zM27,6h1v1h-1zM28,6h1v1h-1zM9,7h1v1h-1zM10,7h1v1h-1zM12,7h1v1h-1zM13,7h1v1h-1zM15,7h1v1h-1zM16,7h1v1h-1zM17,7h1v1h-1zM18,7h1v1h-1zM0,8h1v1h-1zM3,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM8,8h1v1h-1zM9,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM21,8h1v1h-1zM23,8h1v1h-1zM0,9h1v1h-1zM2,9h1v1h-1zM3,9h1v1h-1zM7,9h1v1h-1zM9,9h1v1h-1zM10,9h1v1h-1zM13,9h1v1h-1zM15,9h1v1h-1zM16,9h1v1h-1zM17,9h1v1h-1zM18,9h1v1h-1zM21,9h1v1h-1zM22,9h1v1h-1zM25,9h1v1h-1zM28,9h1v1h-1zM3,10h1v1h-1zM5,10h1v1h-1zM6,10h1v1h-1zM7,10h1v1h-1zM8,10h1v1h-1zM12,10h1v1h-1zM13,10h1v1h-1zM14,10h1v1h-1zM15,10h1v1h-1zM19,10h1v1h-1zM21,10h1v1h-1zM23,10h1v1h-1zM24,10h1v1h-1zM25,10h1v1h-1zM26,10h1v1h-1zM27,10h1v1h-1zM0,11h1v1h-1zM1,11h1v1h-1zM2,11h1v1h-1zM3,11h1v1h-1zM4,11h1v1h-1zM8,11h1v1h-1zM9,11h1v1h-1zM13,11h1v1h-1zM16,11h1v1h-1zM19,11h1v1h-1zM20,11h1v1h-1zM23,11h1v1h-1zM24,11h1v1h-1zM26,11h1v1h-1zM27,11h1v1h-1zM1,12h1v1h-1zM4,12h1v1h-1zM5,12h1v1h-1zM6,12h1v1h-1zM9,12h1v1h-1zM14,12h1v1h-1zM15,12h1v1h-1zM17,12h1v1h-1zM18,12h1v1h-1zM22,12h1v1h-1zM25,12h1v1h-1zM27,12h1v1h-1zM28,12h1v1h-1zM2,13h1v1h-1zM4,13h1v1h-1zM5,13h1v1h-1zM11,13h1v1h-1zM13,13h1v1h-1zM14,13h1v1h-1zM15,13h1v1h-1zM16,13h1v1h-1zM17,13h1v1h-1zM18,13h1v1h-1zM19,13h1v1h-1zM21,13h1v1h-1zM1,14h1v1h-1zM2,14h1v1h-1zM3,14h1v1h-1zM4,14h1v1h-1zM6,14h1v1h-1zM8,14h1v1h-1zM10,14h1v1h-1zM13,14h1v1h-1zM14,14h1v1h-1zM17,14h1v1h-1zM20,14h1v1h-1zM21,14h1v1h-1zM23,14h1v1h-1zM25,14h1v1h-1zM26,14h1v1h-1zM27,14h1v1h-1zM28,14h1v1h-1zM0,15h1v1h-1zM1,15h1v1h-1zM2,15h1v1h-1zM5,15h1v1h-1zM7,15h1v1h-1zM8,15h1v1h-1zM11,15h1v1h-1zM12,15h1v1h-1zM15,15h1v1h-1zM17,15h1v1h-1zM19,15h1v1h-1zM22,15h1v1h-1zM24,15h1v1h-1zM25,15h1v1h-1zM27,15h1v1h-1zM1,16h1v1h-1zM2,16h1v1h-1zM3,16h1v1h-1zM6,16h1v1h-1zM8,16h1v1h-1zM13,16h1v1h-1zM17,16h1v1h-1zM18,16h1v1h-1zM27,16h1v1h-1zM2,17h1v1h-1zM4,17h1v1h-1zM5,17h1v1h-1zM7,17h1v1h-1zM11,17h1v1h-1zM12,17h1v1h-1zM13,17h1v1h-1zM14,17h1v1h-1zM15,17h1v1h-1zM16,17h1v1h-1zM18,17h1v1h-1zM20,17h1v1h-1zM22,17h1v1h-1zM25,17h1v1h-1zM28,17h1v1h-1zM0,18h1v1h-1zM2,18h1v1h-1zM5,18h1v1h-1zM6,18h1v1h-1zM7,18h1v1h-1zM9,18h1v1h-1zM10,18h1v1h-1zM11,18h1v1h-1zM12,18h1v1h-1zM14,18h1v1h-1zM15,18h1v1h-1zM16,18h1v1h-1zM21,18h1v1h-1zM22,18h1v1h-1zM23,18h1v1h-1zM24,18h1v1h-1zM27,18h1v1h-1zM28,18h1v1h-1zM2,19h1v1h-1zM3,19h1v1h-1zM4,19h1v1h-1zM5,19h1v1h-1zM7,19h1v1h-1zM10,19h1v1h-1zM12,19h1v1h-1zM14,19h1v1h-1zM17,19h1v1h-1zM18,19h1v1h-1zM21,19h1v1h-1zM23,19h1v1h-1zM27,19h1v1h-1zM28,19h1v1h-1zM0,20h1v1h-1zM5,20h1v1h-1zM6,20h1v1h-1zM9,20h1v1h-1zM11,20h1v1h-1zM12,20h1v1h-1zM15,20h1v1h-1zM17,20h1v1h-1zM18,20h1v1h-1zM20,20h1v1h-1zM21,20h1v1h-1zM22,20h1v1h-1zM23,20h1v1h-1zM24,20h1v1h-1zM26,20h1v1h-1zM8,21h1v1h-1zM10,21h1v1h-1zM11,21h1v1h-1zM12,21h1v1h-1zM14,21h1v1h-1zM15,21h1v1h-1zM20,21h1v1h-1zM24,21h1v1h-1zM26,21h1v1h-1zM27,21h1v1h-1zM28,21h1v1h-1zM0,22h1v1h-1zM1,22h1v1h-1zM2,22h1v1h-1zM3,22h1v1h-1zM4,22h1v1h-1zM5,22h1v1h-1zM6,22h1v1h-1zM11,22h1v1h-1zM16,22h1v1h-1zM17,22h1v1h-1zM20,22h1v1h-1zM22,22h1v1h-1zM24,22h1v1h-1zM27,22h1v1h-1zM0,23h1v1h-1zM6,23h1v1h-1zM8,23h1v1h-1zM10,23h1v1h-1zM11,23h1v1h-1zM14,23h1v1h-1zM15,23h1v1h-1zM17,23h1v1h-1zM19,23h1v1h-1zM20,23h1v1h-1zM24,23h1v1h-1zM25,23h1v1h-1zM26,23h1v1h-1zM28,23h1v1h-1zM0,24h1v1h-1zM2,24h1v1h-1zM3,24h1v1h-1zM4,24h1v1h-1zM6,24h1v1h-1zM10,24h1v1h-1zM16,24h1v1h-1zM20,24h1v1h-1zM21,24h1v1h-1zM22,24h1v1h-1zM23,24h1v1h-1zM24,24h1v1h-1zM0,25h1v1h-1zM2,25h1v1h-1zM3,25h1v1h-1zM4,25h1v1h-1zM6,25h1v1h-1zM8,25h1v1h-1zM9,25h1v1h-1zM12,25h1v1h-1zM15,25h1v1h-1zM17,25h1v1h-1zM21,25h1v1h-1zM22,25h1v1h-1zM23,25h1v1h-1zM24,25h1v1h-1zM25,25h1v1h-1zM26,25h1v1h-1zM28,25h1v1h-1zM0,26h1v1h-1zM2,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM6,26h1v1h-1zM9,26h1v1h-1zM11,26h1v1h-1zM14,26h1v1h-1zM15,26h1v1h-1zM16,26h1v1h-1zM17,26h1v1h-1zM18,26h1v1h-1zM20,26h1v1h-1zM21,26h1v1h-1zM24,26h1v1h-1zM25,26h1v1h-1zM26,26h1v1h-1zM28,26h1v1h-1zM0,27h1v1h-1zM6,27h1v1h-1zM9,27h1v1h-1zM11,27h1v1h-1zM12,27h1v1h-1zM13,27h1v1h-1zM14,27h1v1h-1zM16,27h1v1h-1zM17,27h1v1h-1zM18,27h1v1h-1zM20,27h1v1h-1zM21,27h1v1h-1zM24,27h1v1h-1zM27,27h1v1h-1zM0,28h1v1h-1zM1,28h1v1h-1zM2,28h1v1h-1zM3,28h1v1h-1zM4,28h1v1h-1zM5,28h1v1h-1zM6,28h1v1h-1zM8,28h1v1h-1zM9,28h1v1h-1zM10,28h1v1h-1zM12,28h1v1h-1zM14,28h1v1h-1zM15,28h1v1h-1zM16,28h1v1h-1zM18,28h1v1h-1zM19,28h1v1h-1zM20,28h1v1h-1zM22,28h1v1h-1zM23,28h1v1h-1zM24,28h1v1h-1zM27,28h1v1h-1z" fill="#0b1e4b"/></svg></div>
+          <div class="qr-text">
+            <strong>Scan to message Santo</strong>
+            <p>Drops you straight into a WhatsApp thread with us. Faster than email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- FOOTER -->
+<!-- ====================================================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand-block">
+        <svg viewBox="0 0 380 130" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(0 10)">
+            <line x1="14" y1="14" x2="44" y2="46" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+            <line x1="106" y1="14" x2="76" y2="46" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+            <line x1="14" y1="96" x2="44" y2="64" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+            <line x1="106" y1="96" x2="76" y2="64" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="14" cy="14" r="5" fill="#d4a017"/>
+            <circle cx="106" cy="14" r="5" fill="#d4a017"/>
+            <circle cx="14" cy="96" r="5" fill="#d4a017"/>
+            <circle cx="106" cy="96" r="5" fill="#d4a017"/>
+            <text x="34" y="80" font-family="Fraunces, serif" font-size="80" font-weight="700" fill="#d4a017">1</text>
+            <text x="60" y="80" font-family="Fraunces, serif" font-size="62" font-weight="700" fill="#fff">n</text>
+            <rect x="32" y="32" width="9" height="3.5" fill="#fff" rx="1" transform="rotate(-12 36 34)"/>
+          </g>
+          <text x="155" y="92" font-family="Fraunces, serif" font-size="64" font-weight="700" fill="#fff" letter-spacing="-0.02em">Flow</text>
+        </svg>
+        <p>Software, infrastructure, and the engineering team to operate it. Built for Indonesian financial services and the industries that surround them.</p>
+        <p style="margin-top: 16px; font-size: 12px;">PT 1nFlow Teknologi Indonesia<br/>Jakarta · Indonesia</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#vertical-los">1nFlow-LOS</a></li>
+          <li><a href="#vertical-appraisal">1nFlow-Appraisal</a></li>
+          <li><a href="#vertical-collections">1nFlow-Collections</a></li>
+          <li><a href="#vertical-treasury">1nFlow-Treasury</a></li>
+          <li><a href="#vertical-cdd">1nFlow-CDD</a></li>
+          <li><a href="#platform">Platform overview</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Consulting</h4>
+        <ul>
+          <li><a href="#consulting">Digital transformation</a></li>
+          <li><a href="#consulting">Cloud &amp; infrastructure</a></li>
+          <li><a href="#consulting">On-prem virtualization</a></li>
+          <li><a href="#consulting">IoT &amp; edge</a></li>
+          <li><a href="#consulting">Cybersecurity</a></li>
+          <li><a href="#consulting">Business consulting</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="#industries">BPR &amp; BPRS</a></li>
+          <li><a href="#industries">Tier-2 commercial</a></li>
+          <li><a href="#industries">BPD · regional</a></li>
+          <li><a href="#industries">Multifinance</a></li>
+          <li><a href="#industries">Fintech</a></li>
+          <li><a href="#industries">Manufacturing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#approach">Our approach</a></li>
+          <li><a href="#proof">Customers</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Careers</a></li>
+          <li><a href="#contact">Press</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 PT 1nFlow Teknologi Indonesia. All rights reserved.</div>
+      <div class="compliance">
+        <span>POJK 4/2022</span>
+        <span>UU PDP 27/2022</span>
+        <span>PP 71/2019</span>
+        <span>SOC 2 · target Q3</span>
+        <span>ISO 27001 · in progress</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ====================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ====================================================== -->
+<script>
+// ============ CUSTOM CURSOR ============
+(function() {
+  if (window.matchMedia('(max-width: 920px)').matches) return;
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  if (!dot || !ring) return;
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
+  let dx = mx, dy = my;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+  });
+
+  function tick() {
+    // Dot follows cursor exactly
+    dx += (mx - dx) * 0.45;
+    dy += (my - dy) * 0.45;
+    dot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
+
+    // Ring lags slightly for that "trailing reticle" feel
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Hover state on interactive elements
+  const interactive = 'a, button, input, select, textarea, .vertical-card, .practice-card, .industry-card, .proof-card, .const-node';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactive)) {
+      document.body.classList.add('cursor-hover');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactive)) {
+      document.body.classList.remove('cursor-hover');
+    }
+  });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+})();
+
+// ============ NAV SCROLL STATE ============
+(function() {
+  const nav = document.getElementById('nav');
+  if (!nav) return;
+  function update() {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+// ============ MEGA MENU ============
+(function() {
+  const triggers = document.querySelectorAll('.nav-links a.has-menu');
+  const megas = document.querySelectorAll('.mega');
+  let open = null;
+
+  triggers.forEach(t => {
+    t.addEventListener('mouseenter', () => {
+      const target = t.dataset.mega;
+      megas.forEach(m => m.classList.remove('open'));
+      const m = document.getElementById('mega-' + target);
+      if (m) {
+        m.classList.add('open');
+        open = m;
+      }
+    });
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!open) return;
+    const nav = document.getElementById('nav');
+    const navRect = nav.getBoundingClientRect();
+    const megaRect = open.getBoundingClientRect();
+    const inNav = e.clientY >= navRect.top && e.clientY <= navRect.bottom;
+    const inMega = e.clientY >= megaRect.top && e.clientY <= megaRect.bottom &&
+                   e.clientX >= megaRect.left && e.clientX <= megaRect.right;
+    if (!inNav && !inMega) {
+      open.classList.remove('open');
+      open = null;
+    }
+  });
+})();
+
+// ============ REVEAL ON SCROLL ============
+(function() {
+  const els = document.querySelectorAll('.reveal, .vertical-card, .practice-card, .industry-card, .proof-card, .approach-step, .product-row');
+  els.forEach(el => el.classList.add('reveal'));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(el => io.observe(el));
+})();
+
+// ============ FORM SUBMIT MOCK ============
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  const original = btn.innerHTML;
+  btn.innerHTML = 'Sending…';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.innerHTML = '✓ Sent · we\'ll reply within 1 business day';
+    btn.style.background = '#10b981';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      form.reset();
+      btn.innerHTML = original;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+    }, 4000);
+  }, 800);
+}
+</script>
+
 </body>
 </html>
