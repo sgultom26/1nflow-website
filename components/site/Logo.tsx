@@ -6,9 +6,9 @@ export function LogoMark({ size = 30, className }: { size?: number; className?: 
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} aria-hidden>
       <defs>
         <linearGradient id="auroraLogo" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#14b8a6" />
-          <stop offset="50%" stopColor="#0ea5e9" />
-          <stop offset="100%" stopColor="#8b5cf6" />
+          <stop offset="0%" stopColor="#d4a017" />
+          <stop offset="50%" stopColor="#b8860b" />
+          <stop offset="100%" stopColor="#8a6508" />
         </linearGradient>
       </defs>
       <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#auroraLogo)" />

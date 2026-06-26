@@ -2,13 +2,13 @@
 
 export type MotifKind = "los" | "appraisal" | "collections" | "treasury" | "cdd";
 
-const TEAL = "#14b8a6";
-const SKY = "#0ea5e9";
-const VIOLET = "#8b5cf6";
-const EMERALD = "#10b981";
+const TEAL = "#b8860b"; // gold (primary accent)
+const SKY = "#9aa3b2"; // gray (flow lines)
+const VIOLET = "#545d6e"; // dark gray (labels)
+const EMERALD = "#b8860b"; // gold (success / checks)
 const INK = "#0b1220";
 const MUTE = "#94a3b8";
-const LINE = "#e6ecf3";
+const LINE = "#e6e8ec";
 
 /* 01 — LOS: 5-stage origination pipeline */
 function Los() {

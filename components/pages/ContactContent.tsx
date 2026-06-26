@@ -10,7 +10,7 @@ import { useI18n } from "@/lib/i18n";
 type Status = "idle" | "sending" | "success" | "error";
 
 const inputCls =
-  "w-full rounded-[6px] border border-[var(--hair-strong)] bg-white px-3.5 py-2.5 text-sm text-fg placeholder:text-faint focus:border-sky-500 focus:outline-none";
+  "w-full rounded-[6px] border border-[var(--hair-strong)] bg-white px-3.5 py-2.5 text-sm text-fg placeholder:text-faint focus:border-[var(--color-accent)] focus:outline-none";
 
 export default function ContactContent() {
   const { t } = useI18n();
@@ -96,7 +96,7 @@ export default function ContactContent() {
                     <span className="mono-label">{f.message} <span className="text-accent">·{f.required}</span></span>
                     <textarea rows={4} className={`mt-1.5 resize-y ${inputCls}`} value={form.message} onChange={set("message")} placeholder={f.messagePh} required />
                   </label>
-                  {status === "error" && <p className="text-sm font-medium text-[#e11d48]">{f.error}</p>}
+                  {status === "error" && <p className="text-sm font-semibold text-fg underline">{f.error}</p>}
                   <button type="submit" disabled={!valid || status === "sending"} className="btn btn-primary w-full disabled:cursor-not-allowed disabled:opacity-55">
                     {status === "sending" ? f.sending : f.submit}
                     {status !== "sending" && <ArrowRight size={16} strokeWidth={2.2} />}

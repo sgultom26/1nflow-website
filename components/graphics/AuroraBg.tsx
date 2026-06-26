@@ -20,7 +20,7 @@ export default function AuroraBg({ className }: { className?: string }) {
     let h = 0;
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const colors = ["20,184,166", "14,165,233", "139,92,246", "16,185,129"];
+    const colors = ["212,160,23", "11,18,32", "148,163,184", "11,18,32"];
     let blobs: Blob[] = [];
 
     function layout() {
@@ -47,7 +47,7 @@ export default function AuroraBg({ className }: { className?: string }) {
         const x = b.bx + (reduce ? 0 : Math.sin(t * 0.00012 + b.phase) * b.ax);
         const y = b.by + (reduce ? 0 : Math.cos(t * 0.0001 + b.phase) * b.ay);
         const grad = g.createRadialGradient(x, y, 0, x, y, b.r);
-        grad.addColorStop(0, `rgba(${b.hue},0.22)`);
+        grad.addColorStop(0, `rgba(${b.hue},0.09)`);
         grad.addColorStop(1, `rgba(${b.hue},0)`);
         g.fillStyle = grad;
         g.beginPath();

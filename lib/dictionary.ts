@@ -24,10 +24,10 @@ const en = {
     ctaSecondary: "Explore the platform",
     scrollCue: "See the platform",
     stats: [
-      { k: "5", unit: "verticals", v: "Products on the 1nFlow platform — LOS & Appraisal live, three on the 2026 roadmap." },
-      { k: "~75", unit: "%", v: "Cost vs. Oracle FLEXCUBE / Temenos at comparable parity, on commodity infrastructure." },
-      { k: "8–12", unit: "wk", v: "From contract to first live application — measured, not promised." },
-      { k: "100", unit: "%", v: "Indonesian compliance posture out of the box — POJK, UU PDP, PP 71/2019." },
+      { k: "5", unit: "verticals", v: "One BPMN/DMN engine across loan origination, appraisal, collections, treasury and CDD." },
+      { k: "BPMN", unit: "/DMN", v: "Workflows you edit in the designer — change a process without changing code." },
+      { k: "POJK", unit: "aligned", v: "Indonesian compliance posture out of the box — POJK, UU PDP, PP 71/2019." },
+      { k: "AI", unit: "assisted", v: "AI drafts the 5C credit narrative; your officer reviews, edits and signs — advisory only." },
     ],
   },
   engine: {
@@ -115,8 +115,8 @@ const en = {
     titleAccent: "without core-grade pricing.",
     subtitle: "Built for Indonesian lenders who need modern, compliant workflows in weeks — not multi-year programs.",
     items: [
-      { t: "~75% the cost", d: "Comparable functional parity to FLEXCUBE / Temenos T24, on commodity infrastructure." },
-      { t: "8–12 week deployments", d: "Contract to first live application, measured against real milestones." },
+      { t: "A fraction of core pricing", d: "Modern, compliant workflows without enterprise core-banking license fees." },
+      { t: "Live in weeks, not years", d: "A focused, milestone-driven rollout — not a multi-year core replacement." },
       { t: "Compliance in the box", d: "POJK, UU PDP and PP 71/2019 data sovereignty — not bolted on later." },
       { t: "Yours to change", d: "Edit workflows in the BPMN designer; configure decisions in DMN. No vendor lock on every change." },
     ],
@@ -149,13 +149,13 @@ const en = {
     ],
   },
   proof: {
-    eyebrow: "Proof",
-    title: "Measured, not promised.",
-    note: "Figures are indicative of typical engagements and configurable per institution.",
+    eyebrow: "Built right",
+    title: "Built to be trusted from day one.",
+    note: "Engineered for Indonesian financial services — audit-grade, compliant, and yours to operate.",
     stats: [
-      { k: "8 stages", v: "BPMN origination, fully audited" },
-      { k: "2 live", v: "LOS & Appraisal shipping today" },
-      { k: "POJK-aligned", v: "Compliance posture out of the box" },
+      { k: "Audit-grade", v: "Every decision on a signed, immutable trail" },
+      { k: "Modular", v: "Run one module or the whole platform on one engine" },
+      { k: "POJK-aligned", v: "Indonesian compliance posture out of the box" },
     ],
   },
   cta: {
@@ -294,10 +294,10 @@ const id: Dict = {
     ctaSecondary: "Jelajahi platform",
     scrollCue: "Lihat platform",
     stats: [
-      { k: "5", unit: "vertikal", v: "Produk di platform 1nFlow — LOS & Appraisal live, tiga di roadmap 2026." },
-      { k: "~75", unit: "%", v: "Biaya vs. Oracle FLEXCUBE / Temenos pada paritas setara, di infrastruktur komoditas." },
-      { k: "8–12", unit: "mgg", v: "Dari kontrak ke aplikasi live pertama — terukur, bukan sekadar janji." },
-      { k: "100", unit: "%", v: "Postur kepatuhan Indonesia sejak awal — POJK, UU PDP, PP 71/2019." },
+      { k: "5", unit: "vertikal", v: "Satu mesin BPMN/DMN untuk loan origination, appraisal, collections, treasury, dan CDD." },
+      { k: "BPMN", unit: "/DMN", v: "Workflow yang Anda edit di designer — ubah proses tanpa ubah kode." },
+      { k: "POJK", unit: "selaras", v: "Postur kepatuhan Indonesia sejak awal — POJK, UU PDP, PP 71/2019." },
+      { k: "AI", unit: "berbantuan", v: "AI menyusun narasi kredit 5C; officer Anda meninjau, mengedit, dan menandatangani — hanya advisory." },
     ],
   },
   engine: {
@@ -385,8 +385,8 @@ const id: Dict = {
     titleAccent: "tanpa harga kelas core.",
     subtitle: "Dibuat untuk pemberi pinjaman Indonesia yang butuh workflow modern dan patuh dalam hitungan minggu — bukan program bertahun-tahun.",
     items: [
-      { t: "~75% biayanya", d: "Paritas fungsional setara FLEXCUBE / Temenos T24, di infrastruktur komoditas." },
-      { t: "Deploy 8–12 minggu", d: "Kontrak ke aplikasi live pertama, diukur dari milestone nyata." },
+      { t: "Sebagian kecil dari biaya core", d: "Workflow modern dan patuh tanpa biaya lisensi core-banking enterprise." },
+      { t: "Live dalam hitungan minggu, bukan tahun", d: "Rollout fokus berbasis milestone — bukan penggantian core bertahun-tahun." },
       { t: "Kepatuhan bawaan", d: "POJK, UU PDP, dan kedaulatan data PP 71/2019 — bukan tambahan belakangan." },
       { t: "Bisa Anda ubah", d: "Edit workflow di BPMN designer; konfigurasi keputusan di DMN. Tanpa kunci vendor tiap perubahan." },
     ],
@@ -419,13 +419,13 @@ const id: Dict = {
     ],
   },
   proof: {
-    eyebrow: "Bukti",
-    title: "Terukur, bukan sekadar janji.",
-    note: "Angka bersifat indikatif untuk engagement umum dan dapat dikonfigurasi per institusi.",
+    eyebrow: "Dibangun benar",
+    title: "Dibangun untuk dipercaya sejak hari pertama.",
+    note: "Direkayasa untuk jasa keuangan Indonesia — kelas audit, patuh, dan Anda yang operasikan.",
     stats: [
-      { k: "8 tahap", v: "Origination BPMN, teraudit penuh" },
-      { k: "2 live", v: "LOS & Appraisal sudah berjalan" },
-      { k: "Selaras POJK", v: "Postur kepatuhan sejak awal" },
+      { k: "Kelas audit", v: "Setiap keputusan di jejak bertanda tangan & tak dapat diubah" },
+      { k: "Modular", v: "Jalankan satu modul atau seluruh platform di satu mesin" },
+      { k: "Selaras POJK", v: "Postur kepatuhan Indonesia sejak awal" },
     ],
   },
   cta: {

@@ -33,7 +33,7 @@ function StatusBadge({ status }: { status: string }) {
   return (
     <span
       className={`rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${
-        live ? "bg-[rgba(16,185,129,0.12)] text-emerald-600" : "bg-[var(--color-bg-soft)] text-faint"
+        live ? "bg-[var(--color-accent-soft)] text-[var(--color-accent)]" : "bg-[var(--color-bg-soft)] text-faint"
       }`}
     >
       {status}
