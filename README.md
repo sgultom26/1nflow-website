@@ -6,6 +6,8 @@ plus the consulting practice that deploys it. **One workflow engine. Every produ
 
 > Rebuilt from the original single-file `index.html` (preserved in `legacy/`) into a Next.js app:
 > aurora-light theme, bilingual EN/ID, cinematic animation + product infographics.
+>
+> **Continuing this project?** Read **[`docs/HANDOFF.md`](docs/HANDOFF.md)** first.
 
 ## Stack
 
