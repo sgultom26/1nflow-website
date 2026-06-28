@@ -20,7 +20,7 @@ export default function AuroraBg({ className }: { className?: string }) {
     let h = 0;
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const colors = ["212,160,23", "11,18,32", "148,163,184", "11,18,32"];
+    const colors = ["12,74,110", "11,18,32", "148,163,184", "12,74,110"];
     let blobs: Blob[] = [];
 
     function layout() {

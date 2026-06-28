@@ -11,9 +11,9 @@
   --color-muted: #545d6e;
   --color-faint: #9aa3b2;
 
-  /* original 1nflow brand: gold */
-  --color-accent: #b8860b;
-  --color-accent-soft: #f7efd6;
+  /* 1nflow brand: deep ocean blue */
+  --color-accent: #0c4a6e;
+  --color-accent-soft: #e7f1f8;
 
   --color-line: #e6e8ec;
 
@@ -27,8 +27,8 @@
 :root {
   --hair: #e6e8ec;
   --hair-strong: #d3d7de;
-  /* gold sheen, reused by gradient-text / rules / logo / engine */
-  --aurora: linear-gradient(120deg, #d4a017 0%, #b8860b 52%, #8a6508 100%);
+  /* deep-ocean sheen, reused by gradient-text / rules / logo / engine */
+  --aurora: linear-gradient(120deg, #0c4a6e 0%, #0e5e8e 50%, #1273ad 100%);
 }
 
 @layer base {
@@ -43,7 +43,7 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-  ::selection { background: rgba(212, 160, 23, 0.2); color: var(--color-fg); }
+  ::selection { background: rgba(18, 115, 173, 0.18); color: var(--color-fg); }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 600;
@@ -91,10 +91,10 @@
     border-radius: var(--radius-flat); line-height: 1; cursor: pointer; white-space: nowrap;
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
   }
-  .btn-primary { color: #fff; background: var(--color-fg); box-shadow: 0 6px 20px -10px rgba(11, 18, 32, 0.5); }
-  .btn-primary:hover { transform: translateY(-1px); background: #1f2937; }
+  .btn-primary { color: #fff; background: var(--color-accent); box-shadow: 0 6px 20px -10px rgba(12, 74, 110, 0.55); }
+  .btn-primary:hover { transform: translateY(-1px); background: #0e5e8e; }
   .btn-ghost { color: var(--color-fg); background: transparent; border: 1px solid var(--hair-strong); }
-  .btn-ghost:hover { border-color: var(--color-fg); }
+  .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
   .mono-label {
     font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
@@ -105,12 +105,12 @@
     font-size: 0.72rem; color: var(--color-muted); border: 1px solid var(--color-line);
     border-radius: 999px; padding: 0.4rem 0.8rem; background: var(--color-bg);
   }
-  .glow-aurora { box-shadow: 0 40px 120px -55px rgba(11, 18, 32, 0.3); }
+  .glow-aurora { box-shadow: 0 40px 120px -55px rgba(12, 74, 110, 0.35); }
 
   .grid-bg {
     background-image:
-      linear-gradient(rgba(11, 18, 32, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(11, 18, 32, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(12, 74, 110, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(12, 74, 110, 0.06) 1px, transparent 1px);
     background-size: 56px 56px;
     -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 30%, #000 20%, transparent 75%);
     mask-image: radial-gradient(ellipse 75% 70% at 50% 30%, #000 20%, transparent 75%);

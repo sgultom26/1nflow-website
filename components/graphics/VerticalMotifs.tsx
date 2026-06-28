@@ -2,10 +2,10 @@
 
 export type MotifKind = "los" | "appraisal" | "collections" | "treasury" | "cdd";
 
-const TEAL = "#b8860b"; // gold (primary accent)
+const TEAL = "#0c4a6e"; // deep ocean (primary accent)
 const SKY = "#9aa3b2"; // gray (flow lines)
 const VIOLET = "#545d6e"; // dark gray (labels)
-const EMERALD = "#b8860b"; // gold (success / checks)
+const EMERALD = "#0e7aa8"; // ocean (success / checks)
 const INK = "#0b1220";
 const MUTE = "#94a3b8";
 const LINE = "#e6e8ec";

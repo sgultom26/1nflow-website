@@ -19,9 +19,9 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 10, background: "linear-gradient(100deg,#d4a017,#b8860b,#8a6508)" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 10, background: "linear-gradient(100deg,#0c4a6e,#0e5e8e,#1273ad)" }} />
         <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
-          <div style={{ width: 64, height: 64, borderRadius: 16, background: "linear-gradient(135deg,#d4a017,#b8860b,#8a6508)" }} />
+          <div style={{ width: 64, height: 64, borderRadius: 16, background: "linear-gradient(135deg,#1273ad,#0e5e8e,#0c4a6e)" }} />
           <div style={{ display: "flex", fontSize: 56, fontWeight: 700, color: "#0b1220" }}>1nflow</div>
         </div>
         <div style={{ fontSize: 64, fontWeight: 700, color: "#0b1220", marginTop: 40, letterSpacing: -1, maxWidth: 900 }}>
